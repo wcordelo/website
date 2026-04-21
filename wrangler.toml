@@ -4,12 +4,15 @@
 # `name` MUST match the Pages project slug (Workers & Pages → your site → name in the URL bar).
 # https://developers.cloudflare.com/pages/functions/wrangler-configuration/
 #
-# IMPORTANT (Git-connected Pages): In the dashboard → Settings → Builds & deployments:
+# IMPORTANT (Git-connected Pages): Settings → Builds & deployments
 #   - Build command: bun run build
 #   - Build output directory: dist
-#   - Deploy command: leave EMPTY. Do NOT use `wrangler deploy` — that targets standalone
-#     Workers and will fail (missing main/assets). Pages uploads `dist` + `functions/` for you.
-#   - Use `wrangler pages deploy dist` only for manual CLI deploys, not as the Pages deploy step.
+#   - Deploy command — pick ONE:
+#       (A) Leave EMPTY (recommended). Pages publishes dist + functions/; do not run wrangler deploy.
+#       (B) If you must run Wrangler: bun run cf:ci:deploy
+#           (= wrangler deploy --config wrangler.worker.toml). Plain `npx wrangler deploy` will FAIL
+#           because this file is Pages-only (no main/assets).
+#   You cannot merge pages_build_output_dir + main in one wrangler.toml; Wrangler rejects it.
 
 "$schema" = "node_modules/wrangler/config-schema.json"
 

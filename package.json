@@ -17,6 +17,7 @@
     "cf:worker:secrets:list": "wrangler secret list --config wrangler.worker.toml",
     "cf:worker:secret:put": "wrangler secret put --config wrangler.worker.toml",
     "cf:worker:deploy": "bun run build && wrangler deploy --config wrangler.worker.toml",
+    "cf:ci:deploy": "wrangler deploy --config wrangler.worker.toml",
     "cf:pages:dev": "bun run build && wrangler pages dev dist"
   },
   "dependencies": {
