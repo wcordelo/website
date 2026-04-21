@@ -21,6 +21,20 @@ function emitSeoArtifacts() {
 
 export default defineConfig({
   plugins: [react(), emitSeoArtifacts()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return;
+          if (id.includes('react-router')) return 'vendor-router';
+          if (id.includes('react-helmet-async')) return 'vendor-helmet';
+          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) {
+            return 'vendor-react';
+          }
+        },
+      },
+    },
+  },
   server: {
     proxy: {
       // `bun run dev` starts the Bun API on 3001; use `bun run dev:site` for Vite only
