@@ -9,6 +9,9 @@
     "dev:api": "bun run server/contact-api.ts",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
+    "cf:login": "wrangler login",
+    "cf:secrets:list": "wrangler pages secret list --project-name portfolio",
+    "cf:secret:put": "wrangler pages secret put --project-name portfolio",
     "cf:pages:dev": "bun run build && wrangler pages dev dist"
   },
   "dependencies": {

@@ -15,15 +15,11 @@ name = "portfolio"
 compatibility_date = "2025-04-01"
 pages_build_output_dir = "dist"
 
-# Names that must exist as secrets at runtime. Do not put values here.
-# - Dashboard: Workers & Pages → your project → Settings → Variables and Secrets → add as Secret
-# - CLI: `bunx wrangler pages secret put RESEND_API_KEY` (and same for CONTACT_INBOX_EMAIL)
-# - Local Pages dev: copy .dev.vars.example → .dev.vars (gitignored)
-#
-# Experimental in Wrangler; validates .dev.vars / local dev. See:
-# https://developers.cloudflare.com/workers/configuration/secrets/
-[secrets]
-required = ["RESEND_API_KEY", "CONTACT_INBOX_EMAIL"]
+# Required at runtime for /api/contact (set via dashboard or CLI — do not commit values):
+#   RESEND_API_KEY, CONTACT_INBOX_EMAIL  (secrets)
+#   RESEND_FROM_EMAIL                    (optional; can be plain Text in dashboard)
+# Pages does not support [secrets] in wrangler.toml — use `bun run cf:secret:put` (see package.json).
+# Local Pages dev: copy .dev.vars.example → .dev.vars (gitignored).
 
 # Optional non-sensitive config can use plain Text in the dashboard, for example:
 #   RESEND_FROM_EMAIL=mail@your-verified-domain.com
