@@ -1,31 +1,23 @@
-# Cloudflare Pages + Functions (see functions/api/contact.ts).
-# For the standalone Worker at *.workers.dev, use wrangler.worker.toml + `bun run cf:worker:deploy`.
+# Cloudflare Worker + static assets (Vite output in ./dist).
+# Entry: worker.ts serves ASSETS and POST /api/contact (same behavior as Pages Functions).
 #
-# `name` MUST match the Pages project slug (Workers & Pages → your site → name in the URL bar).
-# https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+# This file is the DEFAULT for `npx wrangler deploy` (e.g. Cloudflare Pages “Deploy command”).
+# Do not add `pages_build_output_dir` here — Wrangler then treats the project as Pages-only
+# and `wrangler deploy` fails with “Missing entry-point”.
 #
-# IMPORTANT (Git-connected Pages): Settings → Builds & deployments
-#   - Build command: bun run build
-#   - Build output directory: dist
-#   - Deploy command — pick ONE:
-#       (A) Leave EMPTY (recommended). Pages publishes dist + functions/; do not run wrangler deploy.
-#       (B) If you must run Wrangler: bun run cf:ci:deploy
-#           (= wrangler deploy --config wrangler.worker.toml). Plain `npx wrangler deploy` will FAIL
-#           because this file is Pages-only (no main/assets).
-#   You cannot merge pages_build_output_dir + main in one wrangler.toml; Wrangler rejects it.
+# Git-connected Pages: keep Build output directory = `dist` in the dashboard. Pages still
+# uploads that folder and bundles `functions/`; this Worker config is only for wrangler deploy.
+#
+# Secrets: Pages → bun run cf:secrets:push | Worker script → bun run cf:worker:secrets:push
+# https://developers.cloudflare.com/workers/static-assets/binding/
 
 "$schema" = "node_modules/wrangler/config-schema.json"
 
 name = "website"
+main = "worker.ts"
 compatibility_date = "2025-04-01"
-pages_build_output_dir = "dist"
 
-# Required at runtime for /api/contact (set via dashboard or CLI — do not commit values):
-#   RESEND_API_KEY, CONTACT_INBOX_EMAIL  (secrets)
-#   RESEND_FROM_EMAIL                    (optional; can be plain Text in dashboard)
-# Pages does not support [secrets] in wrangler.toml — use `bun run cf:secret:put` (see package.json).
-# Local Pages dev: copy .dev.vars.example → .dev.vars (gitignored).
-
-# Optional non-sensitive config can use plain Text in the dashboard, for example:
-#   RESEND_FROM_EMAIL=mail@your-verified-domain.com
-# Never commit real API keys under [vars].
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+run_worker_first = true

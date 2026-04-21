@@ -67,7 +67,7 @@ await Bun.write(TMP, `${lines.join('\n')}\n`);
 
 const pagesProject = !isWorker ? resolveCfPagesProject(map) : '';
 const wranglerArgs = isWorker
-  ? ['bunx', 'wrangler', 'secret', 'bulk', TMP, '--config', 'wrangler.worker.toml']
+  ? ['bunx', 'wrangler', 'secret', 'bulk', TMP]
   : ['bunx', 'wrangler', 'pages', 'secret', 'bulk', TMP, '--project-name', pagesProject];
 
 const proc = Bun.spawnSync(wranglerArgs, {
@@ -88,7 +88,7 @@ if (!proc.success) {
 }
 
 if (isWorker) {
-  console.log(`Pushed ${lines.length} secret(s) to standalone Worker (wrangler.worker.toml) from ${ENV_PATH}.`);
+  console.log(`Pushed ${lines.length} secret(s) to Worker from ${ENV_PATH} (see wrangler.toml name).`);
 } else {
   console.log(`Pushed ${lines.length} secret(s) to Pages project "${pagesProject}" from ${ENV_PATH}.`);
 }

@@ -1,6 +1,6 @@
 /**
  * Standalone Cloudflare Worker: static assets from ./dist + POST /api/contact.
- * Deploy: bun run cf:worker:deploy  (uses wrangler.worker.toml)
+ * Deploy: bun run cf:worker:deploy  (default wrangler.toml)
  */
 import type { ContactEnv } from './server/contact-handler';
 import { handleContactRequest } from './server/contact-handler';

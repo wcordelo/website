@@ -14,10 +14,10 @@
     "cf:secret:put": "wrangler pages secret put --project-name $(bun run scripts/cf-pages-project.ts)",
     "cf:secrets:push": "bun run scripts/push-pages-secrets.ts",
     "cf:worker:secrets:push": "bun run scripts/push-pages-secrets.ts --worker",
-    "cf:worker:secrets:list": "wrangler secret list --config wrangler.worker.toml",
-    "cf:worker:secret:put": "wrangler secret put --config wrangler.worker.toml",
-    "cf:worker:deploy": "bun run build && wrangler deploy --config wrangler.worker.toml",
-    "cf:ci:deploy": "wrangler deploy --config wrangler.worker.toml",
+    "cf:worker:secrets:list": "wrangler secret list",
+    "cf:worker:secret:put": "wrangler secret put",
+    "cf:worker:deploy": "bun run build && wrangler deploy",
+    "cf:ci:deploy": "wrangler deploy",
     "cf:pages:dev": "bun run build && wrangler pages dev dist"
   },
   "dependencies": {
