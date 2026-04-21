@@ -1,5 +1,5 @@
 /* TEAM */
-William Lopez-Cordero — portfolio owner. Site content is organized around five disciplines (home hero, /work filters, case tags).
+William Lopez-Cordero — portfolio owner. Site content is organized around five disciplines (home hero section + /work filters + case tags).
 
 /* DISCIPLINES */
 1. AI Automation — pipelines, agents, LLMs
@@ -9,7 +9,7 @@ William Lopez-Cordero — portfolio owner. Site content is organized around five
 5. Aerospace — CFD, flight systems
 
 /* SITE */
-Vite + React + TypeScript + react-router-dom. Styling: custom CSS variables/tokens; type: Fraunces, Geist Mono, JetBrains Mono, Space Grotesk, IBM Plex Mono, Inter (Google Fonts). Routes: / (hero variants via TweaksPanel + localStorage, metrics, five disciplines, case preview, consulting), /work (timeline + filtered case studies + projects), /about (bio, skills matrix), /contact (form + FAQ). Static: /llms.txt, /humans.txt. Production build emits /sitemap.xml and /robots.txt in dist/ from env VITE_SITE_URL. Contact API: Bun + Resend, POST /api/contact; local dev proxies /api → :3001 (see README + .env.example).
+Bun + Vite + React + TypeScript + react-router-dom. Styling: custom CSS variables/tokens; type: Fraunces, Geist Mono, JetBrains Mono, Space Grotesk, IBM Plex Mono, Inter (Google Fonts). Routes: / (hero variants via TweaksPanel + localStorage; metrics “Selected numbers. 10+ years.”; five disciplines; selected work; consulting), /work (timeline + filtered case studies + projects), /about (full-story bio, skills matrix), /contact (form + FAQ). Static: /llms.txt, /humans.txt. Production build emits /sitemap.xml and /robots.txt in dist/ from env VITE_SITE_URL. Contact API: Bun + Resend, POST /api/contact; local dev proxies /api → :3001 (README + .env.example). Lockfile: bun.lock (no package-lock.json).
 
 /* THANKS */
 Open-source fonts via Google Fonts. Annotation tooling: Agentation (development).

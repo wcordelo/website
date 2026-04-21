@@ -23,7 +23,7 @@ export default defineConfig({
   plugins: [react(), emitSeoArtifacts()],
   server: {
     proxy: {
-      // `npm run dev` starts the Bun API on 3001; use `npm run dev:site` for Vite only
+      // `bun run dev` starts the Bun API on 3001; use `bun run dev:site` for Vite only
       '/api': { target: 'http://127.0.0.1:3001', changeOrigin: true },
     },
   },

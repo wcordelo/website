@@ -19,7 +19,7 @@ export async function submitContactForm(payload: ContactPayload): Promise<{ ok: 
   } catch {
     const devHint =
       import.meta.env.DEV && !(import.meta.env.VITE_CONTACT_API_BASE ?? '').trim()
-        ? ' Start the contact API with `npm run dev` (recommended) or `bun run dev:api` in another terminal.'
+        ? ' Start the contact API with `bun run dev` (recommended) or `bun run dev:api` in another terminal.'
         : '';
     return { ok: false, error: `Network error — could not reach the server.${devHint}` };
   }
