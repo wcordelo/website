@@ -1,16 +1,19 @@
 /**
- * Reads your local .env, extracts Cloudflare Pages bindings for the contact API,
- * and runs `wrangler pages secret bulk` (does not upload other .env keys).
+ * Reads your local .env, extracts contact API bindings, uploads to Cloudflare.
  *
- * Usage: bun run cf:secrets:push
- * Optional: CF_PAGES_PROJECT=my-site (or set in .env) if wrangler.toml name differs
- * Optional: bun run scripts/push-pages-secrets.ts /path/to/.env
+ * Pages (Git / *.pages.dev):  bun run cf:secrets:push
+ * Worker (dashboard Worker):  bun run cf:worker:secrets:push
+ *
+ * Optional env path: bun run scripts/push-pages-secrets.ts ./path/.env [--worker]
  */
 import { unlinkSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { resolveCfPagesProject } from './cf-pages-project';
 
-const ENV_PATH = process.argv[2] ?? join(process.cwd(), '.env');
+const args = process.argv.slice(2);
+const isWorker = args.includes('--worker');
+const envPathArg = args.find((a) => !a.startsWith('--'));
+const ENV_PATH = envPathArg ? resolve(process.cwd(), envPathArg) : join(process.cwd(), '.env');
 const TMP = join(process.cwd(), '.env.cf-pages-secrets.tmp');
 
 const OPTIONAL_KEYS = ['RESEND_FROM_EMAIL'] as const;
@@ -46,7 +49,6 @@ if (!(await file.exists())) {
 }
 
 const map = parseDotenv(await file.text());
-const PROJECT = resolveCfPagesProject(map);
 const lines: string[] = [];
 
 for (const key of ALL_KEYS) {
@@ -63,15 +65,17 @@ for (const key of ALL_KEYS) {
 
 await Bun.write(TMP, `${lines.join('\n')}\n`);
 
-const proc = Bun.spawnSync(
-  ['bunx', 'wrangler', 'pages', 'secret', 'bulk', TMP, '--project-name', PROJECT],
-  {
-    cwd: process.cwd(),
-    stdout: 'inherit',
-    stderr: 'inherit',
-    stdin: 'inherit',
-  },
-);
+const pagesProject = !isWorker ? resolveCfPagesProject(map) : '';
+const wranglerArgs = isWorker
+  ? ['bunx', 'wrangler', 'secret', 'bulk', TMP, '--config', 'wrangler.worker.toml']
+  : ['bunx', 'wrangler', 'pages', 'secret', 'bulk', TMP, '--project-name', pagesProject];
+
+const proc = Bun.spawnSync(wranglerArgs, {
+  cwd: process.cwd(),
+  stdout: 'inherit',
+  stderr: 'inherit',
+  stdin: 'inherit',
+});
 
 try {
   unlinkSync(TMP);
@@ -83,4 +87,8 @@ if (!proc.success) {
   process.exit(proc.exitCode ?? 1);
 }
 
-console.log(`Pushed ${lines.length} secret(s) to Pages project "${PROJECT}" from ${ENV_PATH}.`);
+if (isWorker) {
+  console.log(`Pushed ${lines.length} secret(s) to standalone Worker (wrangler.worker.toml) from ${ENV_PATH}.`);
+} else {
+  console.log(`Pushed ${lines.length} secret(s) to Pages project "${pagesProject}" from ${ENV_PATH}.`);
+}

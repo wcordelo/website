@@ -18,5 +18,5 @@
     "noUncheckedSideEffectImports": true,
     "verbatimModuleSyntax": true
   },
-  "include": ["server/**/*.ts", "functions/**/*.ts"]
+  "include": ["server/**/*.ts", "functions/**/*.ts", "worker.ts"]
 }

@@ -1,4 +1,6 @@
 # Cloudflare Pages + Functions (see functions/api/contact.ts).
+# For the standalone Worker at *.workers.dev, use wrangler.worker.toml + `bun run cf:worker:deploy`.
+#
 # `name` MUST match the Pages project slug (Workers & Pages → your site → name in the URL bar).
 # https://developers.cloudflare.com/pages/functions/wrangler-configuration/
 #
