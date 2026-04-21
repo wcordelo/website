@@ -3,13 +3,13 @@
  * and runs `wrangler pages secret bulk` (does not upload other .env keys).
  *
  * Usage: bun run cf:secrets:push
- * Optional: CF_PAGES_PROJECT=my-site bun run cf:secrets:push
+ * Optional: CF_PAGES_PROJECT=my-site (or set in .env) if wrangler.toml name differs
  * Optional: bun run scripts/push-pages-secrets.ts /path/to/.env
  */
 import { unlinkSync } from 'node:fs';
 import { join } from 'node:path';
+import { resolveCfPagesProject } from './cf-pages-project';
 
-const PROJECT = process.env.CF_PAGES_PROJECT ?? 'portfolio';
 const ENV_PATH = process.argv[2] ?? join(process.cwd(), '.env');
 const TMP = join(process.cwd(), '.env.cf-pages-secrets.tmp');
 
@@ -46,6 +46,7 @@ if (!(await file.exists())) {
 }
 
 const map = parseDotenv(await file.text());
+const PROJECT = resolveCfPagesProject(map);
 const lines: string[] = [];
 
 for (const key of ALL_KEYS) {

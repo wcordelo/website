@@ -1,5 +1,5 @@
 # Cloudflare Pages + Functions (see functions/api/contact.ts).
-# Set `name` to match your project under Workers & Pages in the dashboard.
+# `name` MUST match the Pages project slug (Workers & Pages → your site → name in the URL bar).
 # https://developers.cloudflare.com/pages/functions/wrangler-configuration/
 #
 # IMPORTANT (Git-connected Pages): In the dashboard → Settings → Builds & deployments:
@@ -11,7 +11,7 @@
 
 "$schema" = "node_modules/wrangler/config-schema.json"
 
-name = "portfolio"
+name = "website"
 compatibility_date = "2025-04-01"
 pages_build_output_dir = "dist"
 

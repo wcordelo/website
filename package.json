@@ -10,8 +10,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "cf:login": "wrangler login",
-    "cf:secrets:list": "wrangler pages secret list --project-name portfolio",
-    "cf:secret:put": "wrangler pages secret put --project-name portfolio",
+    "cf:secrets:list": "wrangler pages secret list --project-name $(bun run scripts/cf-pages-project.ts)",
+    "cf:secret:put": "wrangler pages secret put --project-name $(bun run scripts/cf-pages-project.ts)",
     "cf:secrets:push": "bun run scripts/push-pages-secrets.ts",
     "cf:pages:dev": "bun run build && wrangler pages dev dist"
   },
