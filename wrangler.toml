@@ -1,6 +1,13 @@
 # Cloudflare Pages + Functions (see functions/api/contact.ts).
 # Set `name` to match your project under Workers & Pages in the dashboard.
 # https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+#
+# IMPORTANT (Git-connected Pages): In the dashboard → Settings → Builds & deployments:
+#   - Build command: bun run build
+#   - Build output directory: dist
+#   - Deploy command: leave EMPTY. Do NOT use `wrangler deploy` — that targets standalone
+#     Workers and will fail (missing main/assets). Pages uploads `dist` + `functions/` for you.
+#   - Use `wrangler pages deploy dist` only for manual CLI deploys, not as the Pages deploy step.
 
 "$schema" = "node_modules/wrangler/config-schema.json"
 
