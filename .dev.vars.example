@@ -1,0 +1,6 @@
+# Copy to `.dev.vars` for `bun run cf:pages:dev` (Wrangler loads this next to wrangler.toml).
+# Do not commit `.dev.vars`. https://developers.cloudflare.com/workers/configuration/secrets/
+
+RESEND_API_KEY=re_xxxxxxxxx
+CONTACT_INBOX_EMAIL=you@example.com
+RESEND_FROM_EMAIL=onboarding@resend.dev

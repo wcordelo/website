@@ -1,0 +1,23 @@
+# Cloudflare Pages + Functions (see functions/api/contact.ts).
+# Set `name` to match your project under Workers & Pages in the dashboard.
+# https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+
+"$schema" = "node_modules/wrangler/config-schema.json"
+
+name = "portfolio"
+compatibility_date = "2025-04-01"
+pages_build_output_dir = "dist"
+
+# Names that must exist as secrets at runtime. Do not put values here.
+# - Dashboard: Workers & Pages → your project → Settings → Variables and Secrets → add as Secret
+# - CLI: `bunx wrangler pages secret put RESEND_API_KEY` (and same for CONTACT_INBOX_EMAIL)
+# - Local Pages dev: copy .dev.vars.example → .dev.vars (gitignored)
+#
+# Experimental in Wrangler; validates .dev.vars / local dev. See:
+# https://developers.cloudflare.com/workers/configuration/secrets/
+[secrets]
+required = ["RESEND_API_KEY", "CONTACT_INBOX_EMAIL"]
+
+# Optional non-sensitive config can use plain Text in the dashboard, for example:
+#   RESEND_FROM_EMAIL=mail@your-verified-domain.com
+# Never commit real API keys under [vars].
