@@ -3,6 +3,8 @@ import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 function emitSeoArtifacts() {
   return {
     name: 'emit-seo-artifacts',
@@ -20,7 +22,7 @@ function emitSeoArtifacts() {
 }
 
 export default defineConfig({
-  plugins: [react(), emitSeoArtifacts()],
+  plugins: [react(), emitSeoArtifacts(), cloudflare()],
   server: {
     proxy: {
       // `bun run dev` starts the Bun API on 3001; use `bun run dev:site` for Vite only
