@@ -9,6 +9,27 @@ export type Env = ContactEnv & {
   ASSETS: { fetch(input: Request | URL | string, init?: RequestInit): Promise<Response> };
 };
 
+/** Vite fingerprinted chunks — safe for immutable caching at the edge. */
+const IMMUTABLE_ASSET = /^\/assets\/[^/]+\.[A-Za-z0-9_-]{6,}\.(js|css|mjs)$/;
+
+function withCacheHeaders(res: Response, pathname: string): Response {
+  const type = res.headers.get('Content-Type') ?? '';
+
+  if (IMMUTABLE_ASSET.test(pathname)) {
+    const headers = new Headers(res.headers);
+    headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+    return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
+  }
+
+  if (type.includes('text/html')) {
+    const headers = new Headers(res.headers);
+    headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
+    return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
+  }
+
+  return res;
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
@@ -24,6 +45,6 @@ export default {
         res = await env.ASSETS.fetch(indexReq);
       }
     }
-    return res;
+    return withCacheHeaders(res, url.pathname);
   },
 };

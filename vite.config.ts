@@ -1,7 +1,31 @@
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+
+const criticalShellPath = fileURLToPath(new URL('./src/critical-shell.css', import.meta.url));
+
+function perfFirstPaintPlugin() {
+  return {
+    name: 'perf-first-paint',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html: string) {
+        const critical = readFileSync(criticalShellPath, 'utf-8');
+        let next = html.replace(
+          /(<meta name="viewport"[^>]*\/>)\s*/,
+          `$1\n    <style id="critical-shell">${critical}</style>\n`,
+        );
+        next = next.replace(
+          /<link rel="stylesheet" crossorigin href="(\/assets\/index-[^"]+\.css)">/,
+          `<link rel="stylesheet" crossorigin href="$1" media="print" onload="this.media='all'" />\n    <noscript><link rel="stylesheet" crossorigin href="$1" /></noscript>`,
+        );
+        return next;
+      },
+    },
+  };
+}
 
 function emitSeoArtifacts() {
   return {
@@ -20,7 +44,7 @@ function emitSeoArtifacts() {
 }
 
 export default defineConfig({
-  plugins: [react(), emitSeoArtifacts()],
+  plugins: [react(), perfFirstPaintPlugin(), emitSeoArtifacts()],
   build: {
     rollupOptions: {
       output: {
