@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-
+import { cloudflare } from "@cloudflare/vite-plugin";
 const criticalShellPath = fileURLToPath(new URL('./src/critical-shell.css', import.meta.url));
 
 function perfFirstPaintPlugin() {
@@ -44,7 +44,7 @@ function emitSeoArtifacts() {
 }
 
 export default defineConfig({
-  plugins: [react(), perfFirstPaintPlugin(), emitSeoArtifacts()],
+  plugins: [react(), perfFirstPaintPlugin(), emitSeoArtifacts(), cloudflare()],
   build: {
     rollupOptions: {
       output: {

@@ -5,7 +5,11 @@ dist
 *.local
 .env
 .env.*.local
-.dev.vars
-.dev.vars.*
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
 !.dev.vars.example
 .env.cf-pages-secrets.tmp
