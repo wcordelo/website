@@ -245,12 +245,12 @@ export function ContactPage() {
         <section className="container contact-faq-section">
           <div className="section-head contact-faq-head">
             <span className="section-idx">FAQ</span>
-            <h3 className="section-kicker">Quick answers</h3>
+            <h2 className="section-kicker">Quick answers</h2>
           </div>
           <div className="about-bio-prose contact-faq-list">
             {SITE_FAQ.map((item) => (
               <div key={item.question} className="contact-faq-item">
-                <h4 className="discipline-label contact-faq-q">{item.question}</h4>
+                <h3 className="discipline-label contact-faq-q">{item.question}</h3>
                 <p className="contact-faq-a">{item.answer}</p>
               </div>
             ))}

@@ -10,6 +10,17 @@
     "build": "tsc -b && vite build",
     "preview": "bun run build && wrangler dev",
     "deploy": "bun run build && wrangler deploy"
+    "preview": "vite preview",
+    "cf:login": "wrangler login",
+    "cf:secrets:list": "wrangler pages secret list --project-name $(bun run scripts/cf-pages-project.ts)",
+    "cf:secret:put": "wrangler pages secret put --project-name $(bun run scripts/cf-pages-project.ts)",
+    "cf:secrets:push": "bun run scripts/push-pages-secrets.ts",
+    "cf:worker:secrets:push": "bun run scripts/push-pages-secrets.ts --worker",
+    "cf:worker:secrets:list": "wrangler secret list",
+    "cf:worker:secret:put": "wrangler secret put",
+    "cf:worker:deploy": "bun run build && wrangler deploy",
+    "cf:ci:deploy": "wrangler deploy",
+    "cf:pages:dev": "bun run build && wrangler pages dev dist"
   },
   "dependencies": {
     "react": "^19.2.5",

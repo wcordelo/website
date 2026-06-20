@@ -76,7 +76,7 @@ export function AboutPage() {
         <section className="skills-section container">
           <div className="section-head">
             <span className="section-idx">02</span>
-            <h3 className="section-kicker">Stack · tools · methods.</h3>
+            <h2 className="section-kicker">Stack · tools · methods.</h2>
           </div>
           <div className="skills-grid">
             {Object.entries(RESUME_DATA.skills).map(([group, items]) => (

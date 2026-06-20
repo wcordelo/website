@@ -155,7 +155,7 @@ export function WorkPage() {
         <section ref={casesSectionRef} className="cases-full container" id="case-studies">
           <div className="section-head work-section-head">
             <span className="section-idx">A.</span>
-            <h3 className="section-kicker">Case studies.</h3>
+            <h2 className="section-kicker">Case studies.</h2>
             {filter !== 'all' && (
               <span className="work-filter-showing">
                 Showing: {disciplines.find((d) => d.key === filter)?.label}
@@ -181,7 +181,7 @@ export function WorkPage() {
         <section className="timeline-section container">
           <div className="section-head work-section-head">
             <span className="section-idx">B.</span>
-            <h3 className="section-kicker">Experience timeline.</h3>
+            <h2 className="section-kicker">Experience timeline.</h2>
           </div>
           <div className="filter-bar work-filter-bar">
             <span className="filter-label">Filter:</span>
@@ -209,7 +209,7 @@ export function WorkPage() {
         <section className="projects-section container">
           <div className="section-head work-section-head">
             <span className="section-idx">C.</span>
-            <h3 className="section-kicker">Projects & side work.</h3>
+            <h2 className="section-kicker">Projects & side work.</h2>
           </div>
           <div className="projects-grid">
             {RESUME_DATA.projects.map((p, i) => (
@@ -220,7 +220,7 @@ export function WorkPage() {
                 style={{ transitionDelay: `${i * 60}ms` }}
               >
                 <span className="project-kind">{p.kind}</span>
-                <h4 className="project-title">{p.title}</h4>
+                <h3 className="project-title">{p.title}</h3>
                 <p className="project-summary">{p.summary}</p>
                 <div className="project-tags">
                   {p.tags.map((t) => (

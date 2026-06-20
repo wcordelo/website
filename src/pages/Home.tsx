@@ -27,6 +27,7 @@ function HeroType() {
 
   return (
     <section className="hero-type">
+      <h1 className="visually-hidden">{RESUME_DATA.identity.name}</h1>
       <div className="hero-meta container">
         <div className="hero-meta-row">
           <span className="hero-meta-k">Portfolio</span>
@@ -273,7 +274,7 @@ function HomeMetrics() {
     <section className="home-metrics container" data-reveal>
       <div className="section-head">
         <span className="section-idx">01</span>
-        <h3 className="section-kicker">Selected numbers. 10+ years.</h3>
+        <h2 className="section-kicker">Selected numbers. 10+ years.</h2>
       </div>
       <div className="metrics-grid">
         {RESUME_DATA.metrics.map((m, i) => (
@@ -294,14 +295,14 @@ function HomeDisciplines() {
       <div className="container">
         <div className="section-head">
           <span className="section-idx">02</span>
-          <h3 className="section-kicker">Five disciplines. One operator.</h3>
+          <h2 className="section-kicker">Five disciplines. One operator.</h2>
         </div>
       </div>
       <div className="discipline-grid">
         {disciplines.map((d, i) => (
           <div className="discipline" key={d.key} data-reveal style={{ transitionDelay: `${i * 80}ms` }}>
             <div className="discipline-num">0{i + 1}</div>
-            <h4 className="discipline-label">{d.label}</h4>
+            <h3 className="discipline-label">{d.label}</h3>
             <div className="discipline-meta">{d.count}</div>
             <p className="discipline-copy">{disciplineCopy[d.key]}</p>
           </div>
@@ -317,7 +318,7 @@ function HomeCaseStudiesPreview() {
     <section className="home-cases container" data-reveal>
       <div className="section-head">
         <span className="section-idx">03</span>
-        <h3 className="section-kicker">Selected work.</h3>
+        <h2 className="section-kicker">Selected work.</h2>
         <Link to="/work" className="section-link">
           All work →
         </Link>
@@ -352,7 +353,7 @@ function HomeConsulting() {
     <section className="home-consulting container" data-reveal>
       <div className="section-head">
         <span className="section-idx">04</span>
-        <h3 className="section-kicker">Consulting — helping teams scale.</h3>
+        <h2 className="section-kicker">Consulting — helping teams scale.</h2>
       </div>
       <div className="consulting-inner">
         <p className="consulting-pitch">{RESUME_DATA.consulting.pitch}</p>
@@ -362,9 +363,9 @@ function HomeConsulting() {
               <div className="consulting-card-num" style={{ margin: '0px 0px 16px 20px' }}>
                 0{i + 1}/
               </div>
-              <h4 className="consulting-card-title" style={{ margin: '0px 0px 16px 20px' }}>
+              <h3 className="consulting-card-title" style={{ margin: '0px 0px 16px 20px' }}>
                 {s.title}
-              </h4>
+              </h3>
               <p className="consulting-card-blurb" style={{ margin: '0px 0px 0px 20px' }}>
                 {s.blurb}
               </p>
