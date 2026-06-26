@@ -11,7 +11,7 @@ Auto-updated as tasks are completed. See `docs/startup-ideas/AGENT-TASKS.md` for
 | bnpm (NPM) | 0 | 32 | 0% |
 | bgit (GIT) | 0 | 32 | 0% |
 | DevSync (SYNC) | 15 | 32 | 47% |
-| ShipKit (MOB) | 0 | 35 | 0% |
+| ShipKit (MOB) | 19 | 35 | 54% |
 | Better Slack (COMM) | 0 | 35 | 0% |
 | BenchTrust (BENCH) | 0 | 32 | 0% |
 

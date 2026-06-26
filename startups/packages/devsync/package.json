@@ -1,0 +1,22 @@
+{
+  "name": "@theo/devsync",
+  "version": "0.1.0",
+  "description": "Developer-native sync engine — git-safe, ignore-aware, two-way-safe conflicts",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "devsync": "./src/cli.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "bun test",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@noble/hashes": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.19",
+    "typescript": "^6.0.3"
+  }
+}
