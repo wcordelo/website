@@ -1,0 +1,37 @@
+{
+  "name": "devsync",
+  "displayName": "DevSync",
+  "description": "Developer-native sync status in VS Code",
+  "version": "0.1.0",
+  "publisher": "devsync",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "devsync.showStatus",
+        "title": "DevSync: Show Status"
+      },
+      {
+        "command": "devsync.pause",
+        "title": "DevSync: Pause Sync"
+      },
+      {
+        "command": "devsync.resume",
+        "title": "DevSync: Resume Sync"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p ."
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}

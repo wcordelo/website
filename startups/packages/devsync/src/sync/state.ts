@@ -51,7 +51,27 @@ export class SyncState {
     if (!row) {
       this.db.run("INSERT INTO schema_version (version) VALUES (?)", [SCHEMA_VERSION]);
       this.createTables();
+    } else {
+      this.ensurePartialTransfersTable();
     }
+  }
+
+  private ensurePartialTransfersTable(): void {
+    this.db.run(`
+      CREATE TABLE IF NOT EXISTS partial_transfers (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        root_id TEXT NOT NULL,
+        relative_path TEXT NOT NULL,
+        direction TEXT NOT NULL,
+        total_chunks INTEGER NOT NULL,
+        completed_chunks TEXT NOT NULL DEFAULT '[]',
+        status TEXT NOT NULL DEFAULT 'in_progress',
+        updated_ms INTEGER NOT NULL
+      )
+    `);
+    this.db.run(
+      "CREATE INDEX IF NOT EXISTS idx_partial_root ON partial_transfers(root_id, status)",
+    );
   }
 
   private createTables(): void {
@@ -107,10 +127,26 @@ export class SyncState {
       )
     `);
 
+    this.db.run(`
+      CREATE TABLE IF NOT EXISTS partial_transfers (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        root_id TEXT NOT NULL,
+        relative_path TEXT NOT NULL,
+        direction TEXT NOT NULL,
+        total_chunks INTEGER NOT NULL,
+        completed_chunks TEXT NOT NULL DEFAULT '[]',
+        status TEXT NOT NULL DEFAULT 'in_progress',
+        updated_ms INTEGER NOT NULL
+      )
+    `);
+
     this.db.run(
       "CREATE INDEX IF NOT EXISTS idx_files_root ON files(root_id, sync_state)",
     );
     this.db.run("CREATE INDEX IF NOT EXISTS idx_chunks_hash ON chunks(hash)");
+    this.db.run(
+      "CREATE INDEX IF NOT EXISTS idx_partial_root ON partial_transfers(root_id, status)",
+    );
   }
 
   upsertFile(record: Omit<FileRecord, "id">): number {
@@ -204,6 +240,103 @@ export class SyncState {
          FROM transfer_queue WHERE status = 'pending' ORDER BY created_ms`,
       )
       .all() as { rootId: string; relativePath: string; direction: string }[];
+  }
+
+  markTransferComplete(rootId: string, relativePath: string): void {
+    this.db.run(
+      `UPDATE transfer_queue SET status = 'completed'
+       WHERE root_id = ? AND relative_path = ? AND status = 'pending'`,
+      [rootId, relativePath],
+    );
+  }
+
+  beginPartialTransfer(
+    rootId: string,
+    relativePath: string,
+    direction: "push" | "pull",
+    totalChunks: number,
+  ): number {
+    this.db.run(
+      `INSERT INTO partial_transfers
+         (root_id, relative_path, direction, total_chunks, completed_chunks, status, updated_ms)
+       VALUES (?, ?, ?, ?, '[]', 'in_progress', ?)`,
+      [rootId, relativePath, direction, totalChunks, Date.now()],
+    );
+    const row = this.db
+      .query("SELECT last_insert_rowid() as id")
+      .get() as { id: number };
+    return row.id;
+  }
+
+  recordChunkProgress(transferId: number, chunkIndex: number): void {
+    const row = this.db
+      .query("SELECT completed_chunks as completedChunks FROM partial_transfers WHERE id = ?")
+      .get(transferId) as { completedChunks: string } | null;
+    if (!row) return;
+
+    const completed = JSON.parse(row.completedChunks) as number[];
+    if (!completed.includes(chunkIndex)) {
+      completed.push(chunkIndex);
+      completed.sort((a, b) => a - b);
+    }
+
+    this.db.run(
+      "UPDATE partial_transfers SET completed_chunks = ?, updated_ms = ? WHERE id = ?",
+      [JSON.stringify(completed), Date.now(), transferId],
+    );
+  }
+
+  completePartialTransfer(transferId: number): void {
+    this.db.run(
+      "UPDATE partial_transfers SET status = 'completed', updated_ms = ? WHERE id = ?",
+      [Date.now(), transferId],
+    );
+  }
+
+  failPartialTransfer(transferId: number): void {
+    this.db.run(
+      "UPDATE partial_transfers SET status = 'failed', updated_ms = ? WHERE id = ?",
+      [Date.now(), transferId],
+    );
+  }
+
+  listPartialTransfers(rootId?: string): {
+    id: number;
+    rootId: string;
+    relativePath: string;
+    direction: string;
+    totalChunks: number;
+    completedChunks: number[];
+    status: string;
+  }[] {
+    const sql = rootId
+      ? `SELECT id, root_id as rootId, relative_path as relativePath, direction,
+                total_chunks as totalChunks, completed_chunks as completedChunks, status
+         FROM partial_transfers
+         WHERE root_id = ? AND status IN ('in_progress', 'pending')
+         ORDER BY updated_ms`
+      : `SELECT id, root_id as rootId, relative_path as relativePath, direction,
+                total_chunks as totalChunks, completed_chunks as completedChunks, status
+         FROM partial_transfers
+         WHERE status IN ('in_progress', 'pending')
+         ORDER BY updated_ms`;
+
+    const rows = (rootId
+      ? this.db.query(sql).all(rootId)
+      : this.db.query(sql).all()) as {
+      id: number;
+      rootId: string;
+      relativePath: string;
+      direction: string;
+      totalChunks: number;
+      completedChunks: string;
+      status: string;
+    }[];
+
+    return rows.map((r) => ({
+      ...r,
+      completedChunks: JSON.parse(r.completedChunks) as number[],
+    }));
   }
 
   close(): void {

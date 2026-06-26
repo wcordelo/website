@@ -1,0 +1,16 @@
+[package]
+name = "devsync-daemon"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "devsyncd"
+path = "src/main.rs"
+
+[dependencies]
+devsync-core = { path = "../devsync-core" }
+devsync-ignore = { path = "../devsync-ignore" }
+devsync-transport = { path = "../devsync-transport" }
+tokio.workspace = true
+tracing.workspace = true

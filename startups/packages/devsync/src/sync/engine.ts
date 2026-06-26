@@ -6,27 +6,49 @@ import { chunkFileContent } from "./chunking.ts";
 import { SyncState } from "./state.ts";
 import { LocalTransport } from "../transport/local.ts";
 import { createConflictFile } from "../conflict/index.ts";
+import { shouldPauseForGitLock, checkGitLock, type GitLockStatus } from "./git-lock.ts";
 
 export interface ScanResult {
   scanned: number;
   ignored: number;
   queued: number;
   conflicts: number;
+  paused: boolean;
+  gitLock: GitLockStatus | null;
 }
 
 export class SyncEngine {
   private state: SyncState;
   private transport: LocalTransport;
 
-  constructor(private config: DevSyncConfig) {
-    this.state = new SyncState();
+  constructor(
+    private config: DevSyncConfig,
+    options?: { dbPath?: string },
+  ) {
+    this.state = new SyncState(options?.dbPath);
     this.transport = new LocalTransport(config.transportDir, config.deviceId);
   }
 
   scanRoot(root: SyncRoot): ScanResult {
-    const result: ScanResult = { scanned: 0, ignored: 0, queued: 0, conflicts: 0 };
+    const result: ScanResult = {
+      scanned: 0,
+      ignored: 0,
+      queued: 0,
+      conflicts: 0,
+      paused: false,
+      gitLock: null,
+    };
 
-    if (root.paused) return result;
+    if (root.paused) {
+      result.paused = true;
+      return result;
+    }
+
+    if (shouldPauseForGitLock(root.path)) {
+      result.paused = true;
+      result.gitLock = checkGitLock(root.path);
+      return result;
+    }
 
     const ctx = {
       rootDir: root.path,
@@ -123,7 +145,7 @@ export class SyncEngine {
   }
 
   pushPending(root: SyncRoot): number {
-    if (root.paused) return 0;
+    if (root.paused || shouldPauseForGitLock(root.path)) return 0;
     let pushed = 0;
     const pending = this.state.pendingTransfers().filter((t) => t.rootId === root.id);
 
