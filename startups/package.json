@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "for d in packages/*/; do (cd \"$d\" && bun run build 2>/dev/null) || true; done",
-    "test": "for d in packages/*/; do echo \"Testing $d\" && (cd \"$d\" && bun test) || exit 1; done",
+    "test": "bun test tests/all-tasks.test.ts && for d in packages/*/; do echo \"Testing $d\" && (cd \"$d\" && bun test) || exit 1; done",
     "lint": "for d in packages/*/; do (cd \"$d\" && bun run lint 2>/dev/null) || true; done",
     "bnpm": "bun run packages/bnpm/src/cli.ts",
     "bgit": "bun run packages/bgit/src/cli.ts",
