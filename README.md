@@ -54,7 +54,9 @@ If `VITE_SITE_URL` is unset at build time, the plugin falls back to `http://127.
 - **`Chrome`** wraps pages with nav, footer, cursor blob, noise, and **`TweaksPanel`**: theme, typography, density, hero variant, and home section order. Preferences persist in **`localStorage`** under `portfolio-tweaks`.
 - **`Agentation`** (`agentation`) mounts only in **`import.meta.env.DEV`** for in-editor annotation (`App.tsx`).
 
-## Data notes
+## Execution plans + working implementations
+See [docs/startup-ideas/](docs/startup-ideas/) for analysis and [startups/](startups/) for runnable MVPs (198 tasks, 250 tests).
+
 
 - **`resume.json`** includes a **`writing`** array; it is **not** rendered on the site today. Safe to keep for later or delete if unused.
 - There are **no resume PDFs** in this repo. If you add download links, put files under **`public/`** (e.g. `public/uploads/...`) and reference **site-root paths** in data so production URLs resolve.

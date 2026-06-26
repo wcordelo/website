@@ -7,3 +7,12 @@ export {
   filterFairTasks,
   tagSchemaVersion,
 } from "./temporal.ts";
+export {
+  executeWeeklyDrop,
+  getDropSchedule,
+  WeeklyDropScheduler,
+  listDropManifests,
+  DEFAULT_DROP_SIZE,
+  DROP_CRON_EXPRESSION,
+} from "./weekly-drop.ts";
+export type { WeeklyDropConfig, WeeklyDropResult, DropSchedule } from "./weekly-drop.ts";

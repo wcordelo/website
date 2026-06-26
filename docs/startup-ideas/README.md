@@ -4,6 +4,8 @@ Source: [Theo's Startup Ideas](https://app.notion.com/p/38a3444800948107a03be691
 
 Six autonomous-agent-ready execution plans, each with market analysis, technical architecture, GTM strategy, 90-day roadmap, and a numbered task list (25+ tasks per idea).
 
+**Implementations:** All 198 tasks are implemented in [`startups/`](../startups/) — 6 packages, 250 passing tests. See [TASK-STATUS.md](../startups/TASK-STATUS.md).
+
 ## Plans
 
 | # | Idea | Working Name | Plan | Tasks | Priority Signal |

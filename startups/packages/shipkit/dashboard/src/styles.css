@@ -1,0 +1,38 @@
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.app header {
+  margin-bottom: 2rem;
+}
+
+.app header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.app header p {
+  margin: 0.25rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}

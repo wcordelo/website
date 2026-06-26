@@ -1,0 +1,16 @@
+{
+  "id": "ts-003",
+  "title": "Handle WebSocket reconnect backoff",
+  "description": "Client reconnects immediately on disconnect causing thundering herd. Implement exponential backoff in wsClient.ts.",
+  "language": "typescript",
+  "files": [
+    "src/realtime/wsClient.ts",
+    "src/realtime/wsClient.test.ts"
+  ],
+  "testCommand": "bun test src/realtime/wsClient.test.ts",
+  "temporal": {
+    "createdAt": "2025-06-01T00:00:00Z",
+    "licenseId": "partner-acme-001",
+    "sourceRepo": "acme/realtime-hub"
+  }
+}

@@ -1,0 +1,105 @@
+name: ShipKit Scan
+description: Scan Expo/RN repos for 16KB compliance, SDK issues, and store preflight
+branding:
+  icon: smartphone
+  color: blue
+
+inputs:
+  path:
+    description: Path to the Expo/RN project
+    required: false
+    default: "."
+  upload-report:
+    description: Upload HTML report as artifact
+    required: false
+    default: "true"
+  fail-on-error:
+    description: Fail the workflow if critical preflight errors are found
+    required: false
+    default: "false"
+  post-comment:
+    description: Post scan summary as PR comment (requires pull_request event)
+    required: false
+    default: "true"
+  comment-tag:
+    description: HTML marker for idempotent PR comment updates
+    required: false
+    default: "shipkit-scan"
+  github-token:
+    description: GitHub token with pull-requests write (for PR comments)
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  health-score:
+    description: Release health score (0-100)
+    value: ${{ steps.scan.outputs.health-score }}
+  report-path:
+    description: Path to the generated HTML report
+    value: ${{ steps.scan.outputs.report-path }}
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
+
+    - name: Install ShipKit
+      shell: bash
+      run: bun install @theo-startups/shipkit@0.1.0
+
+    - name: Run ShipKit scan
+      id: scan
+      shell: bash
+      working-directory: ${{ inputs.path }}
+      run: |
+        bunx shipkit scan . --json > scan-result.json
+        HEALTH=$(bun -e "console.log(JSON.parse(require('fs').readFileSync('scan-result.json','utf8')).healthScore)")
+        echo "health-score=$HEALTH" >> "$GITHUB_OUTPUT"
+        echo "report-path=shipkit-report/scan.html" >> "$GITHUB_OUTPUT"
+        echo "## ShipKit Scan Results" >> "$GITHUB_STEP_SUMMARY"
+        echo "Health score: **$HEALTH/100**" >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Upload report
+      if: inputs.upload-report == 'true'
+      uses: actions/upload-artifact@v4
+      with:
+        name: shipkit-report
+        path: ${{ inputs.path }}/shipkit-report/
+
+    - name: Fail on critical errors
+      if: inputs.fail-on-error == 'true'
+      shell: bash
+      working-directory: ${{ inputs.path }}
+      run: |
+        bun -e "
+          const r = JSON.parse(require('fs').readFileSync('scan-result.json','utf8'));
+          const errors = r.preflight.filter(v => !v.passed && v.severity === 'error');
+          if (errors.length > 0) { console.error(errors.length + ' preflight errors'); process.exit(1); }
+        "
+
+    - name: Post PR comment
+      if: inputs.post-comment == 'true' && github.event_name == 'pull_request'
+      shell: bash
+      working-directory: ${{ inputs.path }}
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+      run: |
+        # See action/PR-COMMENT-SPEC.md for full implementation
+        COMMENT_TAG="${{ inputs.comment-tag }}"
+        HEALTH=$(bun -e "console.log(JSON.parse(require('fs').readFileSync('scan-result.json','utf8')).healthScore)")
+        SDK=$(bun -e "console.log(JSON.parse(require('fs').readFileSync('scan-result.json','utf8')).expo.sdkVersion ?? 'unknown')")
+        ISSUES=$(bun -e "console.log(JSON.parse(require('fs').readFileSync('scan-result.json','utf8')).compliance.issues.length)")
+        BODY="<!-- ${COMMENT_TAG} -->
+        ## ShipKit Scan Results
+
+        **Health score:** ${HEALTH}/100
+        **Expo SDK:** ${SDK}
+        **16KB issues:** ${ISSUES}
+
+        <sub>Powered by ShipKit</sub>
+        <!-- /${COMMENT_TAG} -->"
+        gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+          -f body="$BODY" || echo "PR comment skipped (token or permissions)"

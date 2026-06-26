@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bnpm — Better npm Documentation</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a2332;
+      --border: #2d3a4f;
+      --text: #e7ecf3;
+      --muted: #8b9cb3;
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --code-bg: #0d1117;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+    }
+    header h1 { font-size: 1.25rem; font-weight: 600; }
+    header span { color: var(--muted); font-size: 0.875rem; }
+    nav {
+      width: 240px;
+      padding: 1.5rem;
+      border-right: 1px solid var(--border);
+      position: fixed;
+      top: 57px;
+      bottom: 0;
+      overflow-y: auto;
+      background: var(--surface);
+    }
+    nav h2 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 1rem 0 0.5rem;
+    }
+    nav h2:first-child { margin-top: 0; }
+    nav a {
+      display: block;
+      padding: 0.35rem 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    nav a:hover { color: var(--text); }
+    main {
+      margin-left: 240px;
+      padding: 2rem 3rem 4rem;
+      max-width: 900px;
+    }
+    h2 { font-size: 1.75rem; margin: 2rem 0 1rem; }
+    h2:first-child { margin-top: 0; }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 0.75rem; color: var(--accent-hover); }
+    p { margin-bottom: 1rem; color: var(--muted); }
+    p strong { color: var(--text); }
+    code {
+      background: var(--code-bg);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.875em;
+      font-family: "SF Mono", Menlo, monospace;
+    }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+    pre code { background: none; padding: 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+    }
+    th { background: var(--surface); color: var(--text); }
+    td { color: var(--muted); }
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-cli { background: #1e3a5f; color: #93c5fd; }
+    .badge-flag { background: #3b2f1e; color: #fcd34d; }
+    section { scroll-margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>bnpm</h1>
+    <span>Better npm — install-time block gates &amp; supply-chain hygiene</span>
+  </header>
+
+  <nav>
+    <h2>Start</h2>
+    <a href="#getting-started">Getting Started</a>
+    <a href="#installation">Installation</a>
+    <a href="#quickstart">Quickstart</a>
+    <h2>Configuration</h2>
+    <a href="#better-npmrc">.better-npmrc</a>
+    <a href="#policy-modes">Policy Modes</a>
+    <h2>CLI Reference</h2>
+    <a href="#cmd-install">install</a>
+    <a href="#cmd-ci">ci</a>
+    <a href="#cmd-init">init</a>
+    <a href="#cmd-publish">publish</a>
+    <a href="#cmd-approve">approve</a>
+    <a href="#cmd-shim">shim</a>
+    <a href="#cmd-audit-pipeline">audit-pipeline</a>
+    <a href="#cmd-emergency">emergency</a>
+    <a href="#cmd-bnpx">bnpx</a>
+    <h2>Global Flags</h2>
+    <a href="#flags">--json, --help</a>
+  </nav>
+
+  <main>
+    <section id="getting-started">
+      <h2>Getting Started</h2>
+      <p>
+        <strong>bnpm</strong> is a drop-in wrapper around npm that blocks compromised packages
+        <em>before</em> they reach your <code>node_modules</code>. It ships with embedded threat
+        intelligence from real npm supply-chain incidents and enforces repo-level policy via
+        <code>.better-npmrc</code>.
+      </p>
+      <p>
+        Use <code>bunx @theo-startups/bnpm</code> for zero-install trials, or add it as a dev
+        dependency for CI. All commands support <code>--json</code> for machine-readable output.
+      </p>
+    </section>
+
+    <section id="installation">
+      <h2>Installation</h2>
+      <pre><code># One-off
+bunx @theo-startups/bnpm --help
+
+# Project dev dependency
+bun add -d @theo-startups/bnpm
+
+# Global (optional)
+npm install -g @theo-startups/bnpm</code></pre>
+    </section>
+
+    <section id="quickstart">
+      <h2>Quickstart</h2>
+      <pre><code># 1. Scaffold policy + GitHub Action
+bnpm init --strict
+
+# 2. Install with blocklist gate
+bnpm install
+
+# 3. Audit CI workflows
+bnpm audit-pipeline --sarif results.sarif
+
+# 4. Publish with preflight + tarball diff
+bnpm publish</code></pre>
+    </section>
+
+    <section id="better-npmrc">
+      <h2>.better-npmrc</h2>
+      <p>Machine-readable policy checked into your repo:</p>
+      <pre><code>blocklist = strict
+lifecycle_scripts = allowlist
+allowed_registries = https://registry.npmjs.org
+require_provenance = @myorg/*
+telemetry = off
+script_allowlist = esbuild, prisma</code></pre>
+    </section>
+
+    <section id="policy-modes">
+      <h2>Policy Modes</h2>
+      <table>
+        <thead>
+          <tr><th>Key</th><th>Values</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>blocklist</code></td><td>strict · warn · off</td><td>Threat intel enforcement</td></tr>
+          <tr><td><code>lifecycle_scripts</code></td><td>allow · allowlist · block · warn</td><td>install script policy</td></tr>
+          <tr><td><code>telemetry</code></td><td>opt-in · off</td><td>Anonymous usage (default off)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="cmd-install">
+      <h2><span class="badge badge-cli">command</span> install</h2>
+      <p>Pre-checks dependencies against the blocklist, then passthroughs to <code>npm install</code>.</p>
+      <pre><code>bnpm install
+bnpm install lodash
+bnpm install --json</code></pre>
+    </section>
+
+    <section id="cmd-ci">
+      <h2><span class="badge badge-cli">command</span> ci</h2>
+      <p>Strict CI install with blocklist gate and <code>--ignore-scripts</code> injection.</p>
+      <pre><code>bnpm ci
+bnpm ci --json</code></pre>
+    </section>
+
+    <section id="cmd-init">
+      <h2><span class="badge badge-cli">command</span> init</h2>
+      <p>Scaffolds <code>.better-npmrc</code>, optional strict <code>.npmrc</code>, and a GitHub Action workflow.</p>
+      <pre><code>bnpm init
+bnpm init --strict
+bnpm init --force</code></pre>
+      <p><span class="badge badge-flag">flag</span> <code>--strict</code> — applies hardened presets</p>
+      <p><span class="badge badge-flag">flag</span> <code>--force</code> — overwrite existing files</p>
+    </section>
+
+    <section id="cmd-publish">
+      <h2><span class="badge badge-cli">command</span> publish</h2>
+      <p>Interactive publish wizard with preflight checks and tarball diff vs previous registry version.</p>
+      <pre><code>bnpm publish
+bnpm publish --access public
+bnpm publish --skip-preflight
+bnpm publish --skip-tarball-diff</code></pre>
+      <h3>Preflight checks</h3>
+      <ul style="color: var(--muted); margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Package metadata (name, version)</li>
+        <li>Blocklist gate on self-publish</li>
+        <li>Lifecycle script detection</li>
+        <li>Sigstore provenance (when configured)</li>
+        <li>Tarball diff vs previous version</li>
+      </ul>
+    </section>
+
+    <section id="cmd-approve">
+      <h2><span class="badge badge-cli">command</span> approve</h2>
+      <p>Staged publish approval helper — generates staging URL and CI workflow snippet.</p>
+      <pre><code>bnpm approve --package=my-pkg --version=1.2.3
+bnpm approve --package=my-pkg --version=1.2.3 --approver=alice@corp.com</code></pre>
+    </section>
+
+    <section id="cmd-shim">
+      <h2><span class="badge badge-cli">command</span> shim</h2>
+      <p>Package-manager-agnostic policy gate for pnpm and Yarn.</p>
+      <pre><code>bnpm shim detect
+bnpm shim check --json
+bnpm shim install
+bnpm shim init</code></pre>
+      <p>Generates <code>.pnpmfile.cjs</code> and <code>.yarnrc.yml</code> snippets on <code>shim init</code>.</p>
+    </section>
+
+    <section id="cmd-audit-pipeline">
+      <h2><span class="badge badge-cli">command</span> audit-pipeline</h2>
+      <p>Scans <code>.github/workflows</code> for supply-chain risks. Outputs SARIF for GitHub Security tab.</p>
+      <pre><code>bnpm audit-pipeline
+bnpm audit-pipeline --sarif results.sarif</code></pre>
+    </section>
+
+    <section id="cmd-emergency">
+      <h2><span class="badge badge-cli">command</span> emergency</h2>
+      <p>Emergency deprecate helper for compromised package versions (dry-run by default).</p>
+      <pre><code>bnpm emergency deprecate
+bnpm emergency deprecate --execute
+bnpm emergency deprecate --package=axios@1.14.1</code></pre>
+    </section>
+
+    <section id="cmd-bnpx">
+      <h2><span class="badge badge-cli">command</span> bnpx</h2>
+      <p>Alias invoked as <code>bnpx</code> — passthroughs to <code>npx</code> with JSON support.</p>
+      <pre><code>bnpx cowsay hello</code></pre>
+    </section>
+
+    <section id="flags">
+      <h2>Global Flags</h2>
+      <table>
+        <thead>
+          <tr><th>Flag</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>--json</code></td><td>Machine-readable JSON output on stdout</td></tr>
+          <tr><td><code>-h, --help</code></td><td>Show help</td></tr>
+          <tr><td><code>-v, --version</code></td><td>Show version</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

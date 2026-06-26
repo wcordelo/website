@@ -1,0 +1,16 @@
+{
+  "id": "ts-001",
+  "title": "Fix async race in request deduplicator",
+  "description": "Concurrent identical requests bypass cache and hit upstream twice. Add mutex around in-flight promise map in dedupe.ts.",
+  "language": "typescript",
+  "files": [
+    "src/cache/dedupe.ts",
+    "tests/dedupe.test.ts"
+  ],
+  "testCommand": "bun test tests/dedupe.test.ts",
+  "temporal": {
+    "createdAt": "2025-05-10T00:00:00Z",
+    "licenseId": "partner-fintech-002",
+    "sourceRepo": "fintech/api-gateway"
+  }
+}

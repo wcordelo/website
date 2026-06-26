@@ -1,0 +1,15 @@
+{
+  "id": "ts-002",
+  "title": "Validate ISO date strings in Zod schema",
+  "description": "Payment settlement dates accept invalid strings. Tighten z.string().datetime() usage in settlementSchema.ts.",
+  "language": "typescript",
+  "files": [
+    "src/schemas/settlementSchema.ts"
+  ],
+  "testCommand": "bun test tests/settlementSchema.test.ts",
+  "temporal": {
+    "createdAt": "2025-05-18T00:00:00Z",
+    "licenseId": "partner-fintech-002",
+    "sourceRepo": "fintech/ledger-service"
+  }
+}

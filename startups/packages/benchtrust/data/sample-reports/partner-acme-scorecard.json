@@ -1,0 +1,64 @@
+{
+  "runId": "run-partner-acme-2026q2",
+  "model": "acme-coding-agent-v2.4",
+  "generatedAt": "2026-06-20T14:30:00.000Z",
+  "methodologyVersion": "manifesto-v0.1-draft",
+  "vaultVersion": "holdout-vault-0.1.0",
+  "passAtK": [
+    {
+      "k": 1,
+      "estimate": 0.42,
+      "wilsonLower": 0.31,
+      "wilsonUpper": 0.54,
+      "bootstrapLower": 0.35,
+      "bootstrapUpper": 0.49,
+      "nTasks": 50,
+      "nRuns": 800
+    },
+    {
+      "k": 5,
+      "estimate": 0.68,
+      "wilsonLower": 0.56,
+      "wilsonUpper": 0.78,
+      "bootstrapLower": 0.62,
+      "bootstrapUpper": 0.74,
+      "nTasks": 50,
+      "nRuns": 800
+    },
+    {
+      "k": 10,
+      "estimate": 0.76,
+      "wilsonLower": 0.64,
+      "wilsonUpper": 0.85,
+      "bootstrapLower": 0.71,
+      "bootstrapUpper": 0.81,
+      "nTasks": 50,
+      "nRuns": 800
+    }
+  ],
+  "contamination": {
+    "model": "acme-coding-agent-v2.4",
+    "crsScore": 0.04,
+    "canaryLeaks": 0,
+    "flaggedTasks": [],
+    "scannedAt": "2026-06-20T14:25:00.000Z"
+  },
+  "rewardHackRate": 0.02,
+  "failureModes": {
+    "wrong_approach": 12,
+    "partial_fix": 18,
+    "timeout": 3,
+    "tool_misuse": 5,
+    "hallucinated_api": 2
+  },
+  "byScope": {
+    "narrow": {
+      "passRate": 0.58,
+      "n": 38
+    },
+    "wide": {
+      "passRate": 0.31,
+      "n": 12
+    }
+  }
+}

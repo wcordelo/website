@@ -1,0 +1,16 @@
+{
+  "id": "ts-005",
+  "title": "Fix bigint serialization in JSON API responses",
+  "description": "Account balances overflow Number.MAX_SAFE_INTEGER. Use custom JSON replacer for bigint fields in serializeResponse.ts.",
+  "language": "typescript",
+  "files": [
+    "src/http/serializeResponse.ts",
+    "tests/serializeResponse.test.ts"
+  ],
+  "testCommand": "bun test tests/serializeResponse.test.ts",
+  "temporal": {
+    "createdAt": "2025-06-15T00:00:00Z",
+    "licenseId": "partner-fintech-002",
+    "sourceRepo": "fintech/account-api"
+  }
+}

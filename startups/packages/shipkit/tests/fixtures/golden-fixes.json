@@ -1,0 +1,26 @@
+{
+  "description": "Golden dataset for AI fix suggestion eval (MOB-015)",
+  "fixturePath": "tests/fixtures/sample-expo-app",
+  "expectations": {
+    "minSuggestions": 3,
+    "mustIncludeIssueIds": ["16kb-react-native-reanimated"],
+    "topSuggestionMinConfidence": 0.6,
+    "sortedByConfidence": true,
+    "strategies": ["codemod", "manual", "ai"]
+  },
+  "sampleSuggestions": [
+    {
+      "issueId": "16kb-react-native-reanimated",
+      "descriptionContains": "react-native-reanimated",
+      "minConfidence": 0.8,
+      "strategy": "codemod",
+      "automated": true
+    },
+    {
+      "issueIdPrefix": "preflight-",
+      "minConfidence": 0.4,
+      "strategy": "codemod",
+      "automated": false
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "theo-startups",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "for d in packages/*/; do (cd \"$d\" && bun run build 2>/dev/null) || true; done",
+    "test": "for d in packages/*/; do echo \"Testing $d\" && (cd \"$d\" && bun test) || exit 1; done",
+    "lint": "for d in packages/*/; do (cd \"$d\" && bun run lint 2>/dev/null) || true; done",
+    "bnpm": "bun run packages/bnpm/src/cli.ts",
+    "bgit": "bun run packages/bgit/src/cli.ts",
+    "devsync": "bun run packages/devsync/src/cli.ts",
+    "shipkit": "bun run packages/shipkit/src/cli.ts",
+    "benchtrust": "bun run packages/benchtrust/src/cli.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "typescript": "^6.0.3"
+  }
+}

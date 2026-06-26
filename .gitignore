@@ -6,6 +6,12 @@ dist
 .env
 .env.*.local
 
+# startups runtime artifacts
+startups/packages/**/.benchtrust-runs/
+startups/packages/**/shipkit-report/
+startups/packages/**/.bgit/
+startups/packages/better-slack/*.db
+
 # wrangler files
 .wrangler
 .dev.vars*

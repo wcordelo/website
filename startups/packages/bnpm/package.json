@@ -1,0 +1,44 @@
+{
+  "name": "@theo-startups/bnpm",
+  "version": "0.1.0",
+  "description": "Better npm — install-time block gates, policy enforcement, and supply-chain hygiene",
+  "type": "module",
+  "bin": {
+    "bnpm": "./dist/cli.js",
+    "bnpx": "./dist/cli.js"
+  },
+  "main": "./dist/cli.js",
+  "types": "./dist/cli.d.ts",
+  "files": [
+    "dist",
+    "action"
+  ],
+  "scripts": {
+    "build": "bun build src/cli.ts --outdir dist --target bun --format esm && node -e \"const fs=require('fs');const p='dist/cli.js';fs.writeFileSync(p,'#!/usr/bin/env bun\\n'+fs.readFileSync(p))\" && chmod +x dist/cli.js",
+    "test": "bun test",
+    "lint": "tsc --noEmit",
+    "api": "bun src/api/server.ts"
+  },
+  "keywords": [
+    "npm",
+    "security",
+    "supply-chain",
+    "blocklist",
+    "cli"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18",
+    "bun": ">=1.0.0"
+  },
+  "dependencies": {
+    "hono": "^4.9.6",
+    "semver": "^7.7.2"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.14",
+    "@types/node": "^25.6.0",
+    "@types/semver": "^7.7.0",
+    "typescript": "^6.0.3"
+  }
+}

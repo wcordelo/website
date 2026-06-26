@@ -1,0 +1,22 @@
+{
+  "id": "ts-004-wide",
+  "title": "Refactor monolithic order router to strategy pattern",
+  "description": "orderRouter.ts handles 8 venue types inline. Extract VenueStrategy interface and migrate NYSE, NASDAQ, and dark-pool handlers.",
+  "language": "typescript",
+  "scope": "wide",
+  "files": [
+    "src/routing/orderRouter.ts",
+    "src/routing/strategies/nyse.ts",
+    "src/routing/strategies/nasdaq.ts",
+    "src/routing/strategies/darkPool.ts",
+    "src/routing/strategies/index.ts",
+    "tests/routing/orderRouter.test.ts"
+  ],
+  "testCommand": "bun test tests/routing/",
+  "temporal": {
+    "createdAt": "2025-06-08T00:00:00Z",
+    "licenseId": "partner-fintech-002",
+    "sourceRepo": "fintech/order-router",
+    "modelCutoff": "2025-01-01"
+  }
+}

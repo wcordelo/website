@@ -1,0 +1,130 @@
+import type { ScanResult } from "../types.js";
+
+export function generateJsonReport(result: ScanResult): string {
+  return JSON.stringify(result, null, 2);
+}
+
+export function generateHtmlReport(result: ScanResult): string {
+  const failedPreflight = result.preflight.filter((v) => !v.passed);
+  const elfIssues = result.elfChecks.filter((e) => !e.aligned);
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShipKit Scan Report — ${escapeHtml(result.graph.root)}</title>
+  <style>
+    :root { --bg: #0f172a; --card: #1e293b; --text: #e2e8f0; --accent: #38bdf8; --warn: #fbbf24; --err: #f87171; --ok: #4ade80; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; }
+    .container { max-width: 960px; margin: 0 auto; }
+    h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+    .subtitle { color: #94a3b8; margin-bottom: 2rem; }
+    .score { font-size: 3rem; font-weight: 700; color: var(--accent); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .card { background: var(--card); border-radius: 12px; padding: 1.25rem; }
+    .card h2 { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; margin-bottom: 0.5rem; }
+    .card .value { font-size: 1.5rem; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #334155; }
+    th { color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; }
+    .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+    .badge-ok { background: #166534; color: var(--ok); }
+    .badge-warn { background: #854d0e; color: var(--warn); }
+    .badge-err { background: #991b1b; color: var(--err); }
+    footer { margin-top: 3rem; text-align: center; color: #64748b; font-size: 0.875rem; }
+    .section { margin-top: 2rem; }
+    .section h2 { font-size: 1.25rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ShipKit Scan Report</h1>
+    <p class="subtitle">${escapeHtml(result.graph.root)} · ${escapeHtml(result.scannedAt)}</p>
+
+    <div class="score">${result.healthScore}/100</div>
+    <p style="color:#94a3b8;margin-bottom:2rem">Release health score</p>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Expo SDK</h2>
+        <div class="value">${result.expo.sdkVersion ?? "Unknown"}</div>
+      </div>
+      <div class="card">
+        <h2>Native Modules</h2>
+        <div class="value">${result.graph.nativeModules.length}</div>
+      </div>
+      <div class="card">
+        <h2>16KB Issues</h2>
+        <div class="value">${result.compliance.issues.length}</div>
+      </div>
+      <div class="card">
+        <h2>Preflight Failures</h2>
+        <div class="value">${failedPreflight.length}</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>16KB Compatibility</h2>
+      <table>
+        <thead><tr><th>Package</th><th>Version</th><th>Status</th></tr></thead>
+        <tbody>
+          ${result.compliance.issues.length === 0
+            ? '<tr><td colspan="3">No compatibility issues detected</td></tr>'
+            : result.compliance.issues.map((i) => `
+          <tr>
+            <td>${escapeHtml(i.package)}</td>
+            <td>${escapeHtml(i.version)}</td>
+            <td><span class="badge badge-${i.status === "incompatible" ? "err" : "warn"}">${escapeHtml(i.status)}</span></td>
+          </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Store Preflight</h2>
+      <table>
+        <thead><tr><th>Rule</th><th>Store</th><th>Status</th></tr></thead>
+        <tbody>
+          ${failedPreflight.length === 0
+            ? '<tr><td colspan="3">All preflight checks passed</td></tr>'
+            : failedPreflight.map((v) => `
+          <tr>
+            <td>${escapeHtml(v.title)}</td>
+            <td>${escapeHtml(v.store)}</td>
+            <td><span class="badge badge-${v.severity === "error" ? "err" : "warn"}">${escapeHtml(v.severity)}</span></td>
+          </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+
+    ${elfIssues.length > 0 ? `
+    <div class="section">
+      <h2>ELF Alignment (stub)</h2>
+      <table>
+        <thead><tr><th>File</th><th>Page Size</th><th>Aligned</th></tr></thead>
+        <tbody>
+          ${elfIssues.map((e) => `
+          <tr>
+            <td>${escapeHtml(e.file)}</td>
+            <td>${e.pageSize}</td>
+            <td><span class="badge badge-err">misaligned</span></td>
+          </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>` : ""}
+
+    <footer>Generated by <strong>ShipKit</strong> v0.1 — Release intelligence for Expo/RN teams</footer>
+  </div>
+</body>
+</html>`;
+}
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}

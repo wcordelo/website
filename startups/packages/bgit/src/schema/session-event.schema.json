@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://bgit.dev/schema/session-event/v0.1",
+  "title": "bgit Session Event",
+  "type": "object",
+  "required": ["ts", "type", "summary"],
+  "properties": {
+    "ts": { "type": "string", "format": "date-time" },
+    "type": { "type": "string" },
+    "summary": { "type": "string" },
+    "data": { "type": "object" }
+  }
+}

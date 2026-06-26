@@ -1,0 +1,2185 @@
+{
+  "version": "0.1.0",
+  "changes": [
+    {
+      "id": "BC-001",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Metro config",
+      "description": "Update metro.config.js for new resolver",
+      "affectedPackages": [
+        "expo",
+        "metro-config"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-002",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Babel preset",
+      "description": "Update babel-preset-expo version",
+      "affectedPackages": [
+        "babel-preset-expo"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-003",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: React Native version",
+      "description": "Bump react-native to required version",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-004",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: New Architecture",
+      "description": "New Architecture default changes",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-005",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: expo-router",
+      "description": "expo-router API changes",
+      "affectedPackages": [
+        "expo-router"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-006",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Splash screen",
+      "description": "expo-splash-screen config migration",
+      "affectedPackages": [
+        "expo-splash-screen"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-007",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Reanimated",
+      "description": "react-native-reanimated plugin config",
+      "affectedPackages": [
+        "react-native-reanimated"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-008",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Gesture handler",
+      "description": "RNGH import path changes",
+      "affectedPackages": [
+        "react-native-gesture-handler"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-009",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Screens",
+      "description": "react-native-screens native API",
+      "affectedPackages": [
+        "react-native-screens"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-010",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Safe area",
+      "description": "SafeAreaView deprecation",
+      "affectedPackages": [
+        "react-native-safe-area-context"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-011",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Async storage",
+      "description": "AsyncStorage migration guide",
+      "affectedPackages": [
+        "@react-native-async-storage/async-storage"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-012",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Gradle plugin",
+      "description": "Android Gradle Plugin version",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-013",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: iOS deployment",
+      "description": "Minimum iOS deployment target",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-014",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Hermes engine",
+      "description": "Hermes version bump",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-015",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Edge to edge",
+      "description": "Android edge-to-edge default",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-016",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Privacy manifest",
+      "description": "iOS PrivacyInfo.xcprivacy required",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-017",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: 16KB pages",
+      "description": "Android 16KB page size requirement",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-018",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Expo modules",
+      "description": "expo-modules-core API changes",
+      "affectedPackages": [
+        "expo-modules-core"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-019",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: App config",
+      "description": "app.config.js schema changes",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-020",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: EAS Build",
+      "description": "EAS build image requirements",
+      "affectedPackages": [
+        "eas-cli"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-021",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Notifications",
+      "description": "expo-notifications permission API",
+      "affectedPackages": [
+        "expo-notifications"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-022",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Camera module",
+      "description": "expo-camera permission model",
+      "affectedPackages": [
+        "expo-camera"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-023",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Location module",
+      "description": "expo-location background modes",
+      "affectedPackages": [
+        "expo-location"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-024",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: File system",
+      "description": "expo-file-system path changes",
+      "affectedPackages": [
+        "expo-file-system"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-025",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Updates module",
+      "description": "expo-updates runtime version",
+      "affectedPackages": [
+        "expo-updates"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-026",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Dev client",
+      "description": "expo-dev-client build changes",
+      "affectedPackages": [
+        "expo-dev-client"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-027",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: SVG",
+      "description": "react-native-svg breaking props",
+      "affectedPackages": [
+        "react-native-svg"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-028",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: WebView",
+      "description": "react-native-webview props changes",
+      "affectedPackages": [
+        "react-native-webview"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-029",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Maps",
+      "description": "react-native-maps provider config",
+      "affectedPackages": [
+        "react-native-maps"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-030",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Sentry",
+      "description": "@sentry/react-native init API",
+      "affectedPackages": [
+        "@sentry/react-native"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-031",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Navigation",
+      "description": "@react-navigation v7 changes",
+      "affectedPackages": [
+        "@react-navigation/native"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-032",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Firebase",
+      "description": "@react-native-firebase modular API",
+      "affectedPackages": [
+        "@react-native-firebase/app"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-033",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Stripe",
+      "description": "@stripe/stripe-react-native payment sheet",
+      "affectedPackages": [
+        "@stripe/stripe-react-native"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-034",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: RevenueCat",
+      "description": "react-native-purchases v8 migration",
+      "affectedPackages": [
+        "react-native-purchases"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-035",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Lottie",
+      "description": "lottie-react-native v7",
+      "affectedPackages": [
+        "lottie-react-native"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-036",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: MMKV",
+      "description": "react-native-mmkv encryption API",
+      "affectedPackages": [
+        "react-native-mmkv"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-037",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Vision camera",
+      "description": "Frame processor API",
+      "affectedPackages": [
+        "react-native-vision-camera"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-038",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Skia",
+      "description": "@shopify/react-native-skia version",
+      "affectedPackages": [
+        "@shopify/react-native-skia"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-039",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: FlashList",
+      "description": "@shopify/flash-list v2 changes",
+      "affectedPackages": [
+        "@shopify/flash-list"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-040",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Keyboard controller",
+      "description": "react-native-keyboard-controller inset",
+      "affectedPackages": [
+        "react-native-keyboard-controller"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-041",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: CodePush",
+      "description": "CodePush EOL migration to EAS Update",
+      "affectedPackages": [
+        "react-native-code-push"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-042",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Jest",
+      "description": "jest-expo preset changes",
+      "affectedPackages": [
+        "jest-expo"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-043",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: NativeWind",
+      "description": "NativeWind v4 migration",
+      "affectedPackages": [
+        "nativewind"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-044",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Tamagui",
+      "description": "Tamagui Expo SDK 52",
+      "affectedPackages": [
+        "tamagui"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-045",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Router v4",
+      "description": "expo-router v4 file-based routing",
+      "affectedPackages": [
+        "expo-router"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-046",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Image SDK 52",
+      "description": "expo-image v2 caching",
+      "affectedPackages": [
+        "expo-image"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 50 changelog"
+    },
+    {
+      "id": "BC-047",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Video SDK 52",
+      "description": "expo-video replaces expo-av",
+      "affectedPackages": [
+        "expo-video"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-048",
+      "fromSdk": 49,
+      "toSdk": 50,
+      "title": "SDK 49→50: Audio SDK 52",
+      "description": "expo-audio replaces expo-av audio",
+      "affectedPackages": [
+        "expo-audio"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-049",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Metro config",
+      "description": "Update metro.config.js for new resolver",
+      "affectedPackages": [
+        "expo",
+        "metro-config"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-050",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Babel preset",
+      "description": "Update babel-preset-expo version",
+      "affectedPackages": [
+        "babel-preset-expo"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-051",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: React Native version",
+      "description": "Bump react-native to required version",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-052",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: New Architecture",
+      "description": "New Architecture default changes",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-053",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: expo-router",
+      "description": "expo-router API changes",
+      "affectedPackages": [
+        "expo-router"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-054",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Splash screen",
+      "description": "expo-splash-screen config migration",
+      "affectedPackages": [
+        "expo-splash-screen"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-055",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Reanimated",
+      "description": "react-native-reanimated plugin config",
+      "affectedPackages": [
+        "react-native-reanimated"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-056",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Gesture handler",
+      "description": "RNGH import path changes",
+      "affectedPackages": [
+        "react-native-gesture-handler"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-057",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Screens",
+      "description": "react-native-screens native API",
+      "affectedPackages": [
+        "react-native-screens"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-058",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Safe area",
+      "description": "SafeAreaView deprecation",
+      "affectedPackages": [
+        "react-native-safe-area-context"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-059",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Async storage",
+      "description": "AsyncStorage migration guide",
+      "affectedPackages": [
+        "@react-native-async-storage/async-storage"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-060",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Gradle plugin",
+      "description": "Android Gradle Plugin version",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-061",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: iOS deployment",
+      "description": "Minimum iOS deployment target",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-062",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Hermes engine",
+      "description": "Hermes version bump",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-063",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Edge to edge",
+      "description": "Android edge-to-edge default",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-064",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Privacy manifest",
+      "description": "iOS PrivacyInfo.xcprivacy required",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-065",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: 16KB pages",
+      "description": "Android 16KB page size requirement",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-066",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Expo modules",
+      "description": "expo-modules-core API changes",
+      "affectedPackages": [
+        "expo-modules-core"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-067",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: App config",
+      "description": "app.config.js schema changes",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-068",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: EAS Build",
+      "description": "EAS build image requirements",
+      "affectedPackages": [
+        "eas-cli"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-069",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Notifications",
+      "description": "expo-notifications permission API",
+      "affectedPackages": [
+        "expo-notifications"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-070",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Camera module",
+      "description": "expo-camera permission model",
+      "affectedPackages": [
+        "expo-camera"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-071",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Location module",
+      "description": "expo-location background modes",
+      "affectedPackages": [
+        "expo-location"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-072",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: File system",
+      "description": "expo-file-system path changes",
+      "affectedPackages": [
+        "expo-file-system"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-073",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Updates module",
+      "description": "expo-updates runtime version",
+      "affectedPackages": [
+        "expo-updates"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-074",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Dev client",
+      "description": "expo-dev-client build changes",
+      "affectedPackages": [
+        "expo-dev-client"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-075",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: SVG",
+      "description": "react-native-svg breaking props",
+      "affectedPackages": [
+        "react-native-svg"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-076",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: WebView",
+      "description": "react-native-webview props changes",
+      "affectedPackages": [
+        "react-native-webview"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-077",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Maps",
+      "description": "react-native-maps provider config",
+      "affectedPackages": [
+        "react-native-maps"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-078",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Sentry",
+      "description": "@sentry/react-native init API",
+      "affectedPackages": [
+        "@sentry/react-native"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-079",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Navigation",
+      "description": "@react-navigation v7 changes",
+      "affectedPackages": [
+        "@react-navigation/native"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-080",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Firebase",
+      "description": "@react-native-firebase modular API",
+      "affectedPackages": [
+        "@react-native-firebase/app"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-081",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Stripe",
+      "description": "@stripe/stripe-react-native payment sheet",
+      "affectedPackages": [
+        "@stripe/stripe-react-native"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-082",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: RevenueCat",
+      "description": "react-native-purchases v8 migration",
+      "affectedPackages": [
+        "react-native-purchases"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-083",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Lottie",
+      "description": "lottie-react-native v7",
+      "affectedPackages": [
+        "lottie-react-native"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-084",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: MMKV",
+      "description": "react-native-mmkv encryption API",
+      "affectedPackages": [
+        "react-native-mmkv"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-085",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Vision camera",
+      "description": "Frame processor API",
+      "affectedPackages": [
+        "react-native-vision-camera"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-086",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Skia",
+      "description": "@shopify/react-native-skia version",
+      "affectedPackages": [
+        "@shopify/react-native-skia"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-087",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: FlashList",
+      "description": "@shopify/flash-list v2 changes",
+      "affectedPackages": [
+        "@shopify/flash-list"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-088",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Keyboard controller",
+      "description": "react-native-keyboard-controller inset",
+      "affectedPackages": [
+        "react-native-keyboard-controller"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-089",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: CodePush",
+      "description": "CodePush EOL migration to EAS Update",
+      "affectedPackages": [
+        "react-native-code-push"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-090",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Jest",
+      "description": "jest-expo preset changes",
+      "affectedPackages": [
+        "jest-expo"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-091",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: NativeWind",
+      "description": "NativeWind v4 migration",
+      "affectedPackages": [
+        "nativewind"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-092",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Tamagui",
+      "description": "Tamagui Expo SDK 52",
+      "affectedPackages": [
+        "tamagui"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-093",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Router v4",
+      "description": "expo-router v4 file-based routing",
+      "affectedPackages": [
+        "expo-router"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-094",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Image SDK 52",
+      "description": "expo-image v2 caching",
+      "affectedPackages": [
+        "expo-image"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 51 changelog"
+    },
+    {
+      "id": "BC-095",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Video SDK 52",
+      "description": "expo-video replaces expo-av",
+      "affectedPackages": [
+        "expo-video"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-096",
+      "fromSdk": 50,
+      "toSdk": 51,
+      "title": "SDK 50→51: Audio SDK 52",
+      "description": "expo-audio replaces expo-av audio",
+      "affectedPackages": [
+        "expo-audio"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-097",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Metro config",
+      "description": "Update metro.config.js for new resolver",
+      "affectedPackages": [
+        "expo",
+        "metro-config"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-098",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Babel preset",
+      "description": "Update babel-preset-expo version",
+      "affectedPackages": [
+        "babel-preset-expo"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-099",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: React Native version",
+      "description": "Bump react-native to required version",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-100",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: New Architecture",
+      "description": "New Architecture default changes",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-101",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: expo-router",
+      "description": "expo-router API changes",
+      "affectedPackages": [
+        "expo-router"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-102",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Splash screen",
+      "description": "expo-splash-screen config migration",
+      "affectedPackages": [
+        "expo-splash-screen"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-103",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Reanimated",
+      "description": "react-native-reanimated plugin config",
+      "affectedPackages": [
+        "react-native-reanimated"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-104",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Gesture handler",
+      "description": "RNGH import path changes",
+      "affectedPackages": [
+        "react-native-gesture-handler"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-105",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Screens",
+      "description": "react-native-screens native API",
+      "affectedPackages": [
+        "react-native-screens"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-106",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Safe area",
+      "description": "SafeAreaView deprecation",
+      "affectedPackages": [
+        "react-native-safe-area-context"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-107",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Async storage",
+      "description": "AsyncStorage migration guide",
+      "affectedPackages": [
+        "@react-native-async-storage/async-storage"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-108",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Gradle plugin",
+      "description": "Android Gradle Plugin version",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-109",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: iOS deployment",
+      "description": "Minimum iOS deployment target",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-110",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Hermes engine",
+      "description": "Hermes version bump",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-111",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Edge to edge",
+      "description": "Android edge-to-edge default",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-112",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Privacy manifest",
+      "description": "iOS PrivacyInfo.xcprivacy required",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-113",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: 16KB pages",
+      "description": "Android 16KB page size requirement",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-114",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Expo modules",
+      "description": "expo-modules-core API changes",
+      "affectedPackages": [
+        "expo-modules-core"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-115",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: App config",
+      "description": "app.config.js schema changes",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-116",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: EAS Build",
+      "description": "EAS build image requirements",
+      "affectedPackages": [
+        "eas-cli"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-117",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Notifications",
+      "description": "expo-notifications permission API",
+      "affectedPackages": [
+        "expo-notifications"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-118",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Camera module",
+      "description": "expo-camera permission model",
+      "affectedPackages": [
+        "expo-camera"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-119",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Location module",
+      "description": "expo-location background modes",
+      "affectedPackages": [
+        "expo-location"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-120",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: File system",
+      "description": "expo-file-system path changes",
+      "affectedPackages": [
+        "expo-file-system"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-121",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Updates module",
+      "description": "expo-updates runtime version",
+      "affectedPackages": [
+        "expo-updates"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-122",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Dev client",
+      "description": "expo-dev-client build changes",
+      "affectedPackages": [
+        "expo-dev-client"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-123",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: SVG",
+      "description": "react-native-svg breaking props",
+      "affectedPackages": [
+        "react-native-svg"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-124",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: WebView",
+      "description": "react-native-webview props changes",
+      "affectedPackages": [
+        "react-native-webview"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-125",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Maps",
+      "description": "react-native-maps provider config",
+      "affectedPackages": [
+        "react-native-maps"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-126",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Sentry",
+      "description": "@sentry/react-native init API",
+      "affectedPackages": [
+        "@sentry/react-native"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-127",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Navigation",
+      "description": "@react-navigation v7 changes",
+      "affectedPackages": [
+        "@react-navigation/native"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-128",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Firebase",
+      "description": "@react-native-firebase modular API",
+      "affectedPackages": [
+        "@react-native-firebase/app"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-129",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Stripe",
+      "description": "@stripe/stripe-react-native payment sheet",
+      "affectedPackages": [
+        "@stripe/stripe-react-native"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-130",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: RevenueCat",
+      "description": "react-native-purchases v8 migration",
+      "affectedPackages": [
+        "react-native-purchases"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-131",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Lottie",
+      "description": "lottie-react-native v7",
+      "affectedPackages": [
+        "lottie-react-native"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-132",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: MMKV",
+      "description": "react-native-mmkv encryption API",
+      "affectedPackages": [
+        "react-native-mmkv"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-133",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Vision camera",
+      "description": "Frame processor API",
+      "affectedPackages": [
+        "react-native-vision-camera"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-134",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Skia",
+      "description": "@shopify/react-native-skia version",
+      "affectedPackages": [
+        "@shopify/react-native-skia"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-135",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: FlashList",
+      "description": "@shopify/flash-list v2 changes",
+      "affectedPackages": [
+        "@shopify/flash-list"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-136",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Keyboard controller",
+      "description": "react-native-keyboard-controller inset",
+      "affectedPackages": [
+        "react-native-keyboard-controller"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-137",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: CodePush",
+      "description": "CodePush EOL migration to EAS Update",
+      "affectedPackages": [
+        "react-native-code-push"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-138",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Jest",
+      "description": "jest-expo preset changes",
+      "affectedPackages": [
+        "jest-expo"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-139",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: NativeWind",
+      "description": "NativeWind v4 migration",
+      "affectedPackages": [
+        "nativewind"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-140",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Tamagui",
+      "description": "Tamagui Expo SDK 52",
+      "affectedPackages": [
+        "tamagui"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-141",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Router v4",
+      "description": "expo-router v4 file-based routing",
+      "affectedPackages": [
+        "expo-router"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-142",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Image SDK 52",
+      "description": "expo-image v2 caching",
+      "affectedPackages": [
+        "expo-image"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 52 changelog"
+    },
+    {
+      "id": "BC-143",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Video SDK 52",
+      "description": "expo-video replaces expo-av",
+      "affectedPackages": [
+        "expo-video"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-144",
+      "fromSdk": 51,
+      "toSdk": 52,
+      "title": "SDK 51→52: Audio SDK 52",
+      "description": "expo-audio replaces expo-av audio",
+      "affectedPackages": [
+        "expo-audio"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-145",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Metro config",
+      "description": "Update metro.config.js for new resolver",
+      "affectedPackages": [
+        "expo",
+        "metro-config"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-146",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Babel preset",
+      "description": "Update babel-preset-expo version",
+      "affectedPackages": [
+        "babel-preset-expo"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-147",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: React Native version",
+      "description": "Bump react-native to required version",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-148",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: New Architecture",
+      "description": "New Architecture default changes",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-149",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: expo-router",
+      "description": "expo-router API changes",
+      "affectedPackages": [
+        "expo-router"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-150",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Splash screen",
+      "description": "expo-splash-screen config migration",
+      "affectedPackages": [
+        "expo-splash-screen"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-151",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Reanimated",
+      "description": "react-native-reanimated plugin config",
+      "affectedPackages": [
+        "react-native-reanimated"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-152",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Gesture handler",
+      "description": "RNGH import path changes",
+      "affectedPackages": [
+        "react-native-gesture-handler"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-153",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Screens",
+      "description": "react-native-screens native API",
+      "affectedPackages": [
+        "react-native-screens"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-154",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Safe area",
+      "description": "SafeAreaView deprecation",
+      "affectedPackages": [
+        "react-native-safe-area-context"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-155",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Async storage",
+      "description": "AsyncStorage migration guide",
+      "affectedPackages": [
+        "@react-native-async-storage/async-storage"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-156",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Gradle plugin",
+      "description": "Android Gradle Plugin version",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-157",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: iOS deployment",
+      "description": "Minimum iOS deployment target",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-158",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Hermes engine",
+      "description": "Hermes version bump",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-159",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Edge to edge",
+      "description": "Android edge-to-edge default",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-160",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Privacy manifest",
+      "description": "iOS PrivacyInfo.xcprivacy required",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-161",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: 16KB pages",
+      "description": "Android 16KB page size requirement",
+      "affectedPackages": [
+        "react-native"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-162",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Expo modules",
+      "description": "expo-modules-core API changes",
+      "affectedPackages": [
+        "expo-modules-core"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-163",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: App config",
+      "description": "app.config.js schema changes",
+      "affectedPackages": [
+        "expo"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-164",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: EAS Build",
+      "description": "EAS build image requirements",
+      "affectedPackages": [
+        "eas-cli"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-165",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Notifications",
+      "description": "expo-notifications permission API",
+      "affectedPackages": [
+        "expo-notifications"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-166",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Camera module",
+      "description": "expo-camera permission model",
+      "affectedPackages": [
+        "expo-camera"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-167",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Location module",
+      "description": "expo-location background modes",
+      "affectedPackages": [
+        "expo-location"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-168",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: File system",
+      "description": "expo-file-system path changes",
+      "affectedPackages": [
+        "expo-file-system"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-169",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Updates module",
+      "description": "expo-updates runtime version",
+      "affectedPackages": [
+        "expo-updates"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-170",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Dev client",
+      "description": "expo-dev-client build changes",
+      "affectedPackages": [
+        "expo-dev-client"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-171",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: SVG",
+      "description": "react-native-svg breaking props",
+      "affectedPackages": [
+        "react-native-svg"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-172",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: WebView",
+      "description": "react-native-webview props changes",
+      "affectedPackages": [
+        "react-native-webview"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-173",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Maps",
+      "description": "react-native-maps provider config",
+      "affectedPackages": [
+        "react-native-maps"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-174",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Sentry",
+      "description": "@sentry/react-native init API",
+      "affectedPackages": [
+        "@sentry/react-native"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-175",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Navigation",
+      "description": "@react-navigation v7 changes",
+      "affectedPackages": [
+        "@react-navigation/native"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-176",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Firebase",
+      "description": "@react-native-firebase modular API",
+      "affectedPackages": [
+        "@react-native-firebase/app"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-177",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Stripe",
+      "description": "@stripe/stripe-react-native payment sheet",
+      "affectedPackages": [
+        "@stripe/stripe-react-native"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-178",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: RevenueCat",
+      "description": "react-native-purchases v8 migration",
+      "affectedPackages": [
+        "react-native-purchases"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-179",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Lottie",
+      "description": "lottie-react-native v7",
+      "affectedPackages": [
+        "lottie-react-native"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-180",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: MMKV",
+      "description": "react-native-mmkv encryption API",
+      "affectedPackages": [
+        "react-native-mmkv"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-181",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Vision camera",
+      "description": "Frame processor API",
+      "affectedPackages": [
+        "react-native-vision-camera"
+      ],
+      "severity": "low",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-182",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Skia",
+      "description": "@shopify/react-native-skia version",
+      "affectedPackages": [
+        "@shopify/react-native-skia"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-183",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: FlashList",
+      "description": "@shopify/flash-list v2 changes",
+      "affectedPackages": [
+        "@shopify/flash-list"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-184",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Keyboard controller",
+      "description": "react-native-keyboard-controller inset",
+      "affectedPackages": [
+        "react-native-keyboard-controller"
+      ],
+      "severity": "critical",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-185",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: CodePush",
+      "description": "CodePush EOL migration to EAS Update",
+      "affectedPackages": [
+        "react-native-code-push"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-186",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Jest",
+      "description": "jest-expo preset changes",
+      "affectedPackages": [
+        "jest-expo"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "BC-187",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: NativeWind",
+      "description": "NativeWind v4 migration",
+      "affectedPackages": [
+        "nativewind"
+      ],
+      "severity": "high",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-188",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Tamagui",
+      "description": "Tamagui Expo SDK 52",
+      "affectedPackages": [
+        "tamagui"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BC-189",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Router v4",
+      "description": "expo-router v4 file-based routing",
+      "affectedPackages": [
+        "expo-router"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "BC-190",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Image SDK 52",
+      "description": "expo-image v2 caching",
+      "affectedPackages": [
+        "expo-image"
+      ],
+      "severity": "medium",
+      "fixHint": "See Expo SDK 53 changelog"
+    },
+    {
+      "id": "BC-191",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Video SDK 52",
+      "description": "expo-video replaces expo-av",
+      "affectedPackages": [
+        "expo-video"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "BC-192",
+      "fromSdk": 52,
+      "toSdk": 53,
+      "title": "SDK 52→53: Audio SDK 52",
+      "description": "expo-audio replaces expo-av audio",
+      "affectedPackages": [
+        "expo-audio"
+      ],
+      "severity": "critical"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Sample Expo App",
+    "slug": "sample-expo-app",
+    "sdkVersion": "51.0.0",
+    "version": "1.0.0",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "com.example.sample"
+    },
+    "android": {
+      "package": "com.example.sample"
+    }
+  }
+}

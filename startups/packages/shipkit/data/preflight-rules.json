@@ -1,0 +1,725 @@
+{
+  "version": "0.1.0",
+  "rules": [
+    {
+      "id": "APP-001",
+      "store": "apple",
+      "title": "App name present",
+      "description": "App must have a display name in App Store Connect",
+      "severity": "error",
+      "check": "has-app-name"
+    },
+    {
+      "id": "APP-002",
+      "store": "apple",
+      "title": "Bundle identifier",
+      "description": "Unique bundle ID required",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-003",
+      "store": "apple",
+      "title": "Privacy manifest",
+      "description": "PrivacyInfo.xcprivacy required for third-party SDKs",
+      "severity": "error",
+      "check": "has-privacy-manifest"
+    },
+    {
+      "id": "APP-004",
+      "store": "apple",
+      "title": "Privacy nutrition labels",
+      "description": "Accurate privacy labels in App Store Connect",
+      "severity": "warning",
+      "check": "ios-privacy-required"
+    },
+    {
+      "id": "APP-005",
+      "store": "apple",
+      "title": "Required reason APIs",
+      "description": "Declare all Required Reason API usage",
+      "severity": "error",
+      "check": "has-privacy-manifest"
+    },
+    {
+      "id": "APP-006",
+      "store": "apple",
+      "title": "App Tracking Transparency",
+      "description": "ATT prompt if tracking users",
+      "severity": "warning",
+      "check": "ios-privacy-required"
+    },
+    {
+      "id": "APP-007",
+      "store": "apple",
+      "title": "Minimum iOS version",
+      "description": "Support current iOS minus 2 versions",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-008",
+      "store": "apple",
+      "title": "64-bit support",
+      "description": "App must be 64-bit only",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-009",
+      "store": "apple",
+      "title": "Bitcode disabled",
+      "description": "Bitcode no longer accepted",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-010",
+      "store": "apple",
+      "title": "Launch screen",
+      "description": "Launch storyboard or splash required",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-011",
+      "store": "apple",
+      "title": "App icons",
+      "description": "All required icon sizes present",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-012",
+      "store": "apple",
+      "title": "Screenshots",
+      "description": "Valid screenshots for all device sizes",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-013",
+      "store": "apple",
+      "title": "Age rating",
+      "description": "Accurate age rating questionnaire",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-014",
+      "store": "apple",
+      "title": "Export compliance",
+      "description": "Encryption export compliance",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-015",
+      "store": "apple",
+      "title": "Sign in with Apple",
+      "description": "Required if using third-party login",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-016",
+      "store": "apple",
+      "title": "In-app purchase",
+      "description": "Use Apple IAP for digital goods",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-017",
+      "store": "apple",
+      "title": "Subscription terms",
+      "description": "Clear subscription terms displayed",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-018",
+      "store": "apple",
+      "title": "Account deletion",
+      "description": "In-app account deletion required",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-019",
+      "store": "apple",
+      "title": "Push notification entitlement",
+      "description": "Valid push entitlement",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-020",
+      "store": "apple",
+      "title": "Background modes",
+      "description": "Declared background modes match usage",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-021",
+      "store": "apple",
+      "title": "Location permission strings",
+      "description": "NSLocation usage descriptions",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-022",
+      "store": "apple",
+      "title": "Camera permission strings",
+      "description": "NSCamera usage description",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-023",
+      "store": "apple",
+      "title": "Photo library strings",
+      "description": "NSPhotoLibrary usage description",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-024",
+      "store": "apple",
+      "title": "Microphone strings",
+      "description": "NSMicrophone usage description",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-025",
+      "store": "apple",
+      "title": "HealthKit compliance",
+      "description": "HealthKit data usage rules",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-026",
+      "store": "apple",
+      "title": "Kids category",
+      "description": "COPPA compliance for kids apps",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-027",
+      "store": "apple",
+      "title": "Gambling restrictions",
+      "description": "Real-money gambling rules",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-028",
+      "store": "apple",
+      "title": "VPN apps",
+      "description": "VPN app specific requirements",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-029",
+      "store": "apple",
+      "title": "VoIP background",
+      "description": "VoIP background mode rules",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-030",
+      "store": "apple",
+      "title": "TestFlight notes",
+      "description": "Beta review information",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-031",
+      "store": "apple",
+      "title": "App Store review notes",
+      "description": "Review notes for reviewers",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-032",
+      "store": "apple",
+      "title": "Deep linking",
+      "description": "Universal links configured",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-033",
+      "store": "apple",
+      "title": "Associated domains",
+      "description": "Associated domains entitlement",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-034",
+      "store": "apple",
+      "title": "App clips",
+      "description": "App Clip size limits",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-035",
+      "store": "apple",
+      "title": "Widgets",
+      "description": "Widget extension requirements",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-036",
+      "store": "apple",
+      "title": "Siri intents",
+      "description": "Intent definition requirements",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-037",
+      "store": "apple",
+      "title": "CarPlay",
+      "description": "CarPlay app guidelines",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-038",
+      "store": "apple",
+      "title": "Mac Catalyst",
+      "description": "Catalyst app requirements",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-039",
+      "store": "apple",
+      "title": "visionOS",
+      "description": "visionOS app requirements",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-040",
+      "store": "apple",
+      "title": "Alternate icons",
+      "description": "Alternate app icon rules",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-041",
+      "store": "apple",
+      "title": "ProMotion",
+      "description": "120Hz display support",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-042",
+      "store": "apple",
+      "title": "Dynamic Type",
+      "description": "Support Dynamic Type accessibility",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-043",
+      "store": "apple",
+      "title": "VoiceOver",
+      "description": "VoiceOver accessibility labels",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-044",
+      "store": "apple",
+      "title": "Crash reporting",
+      "description": "No private API usage",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "APP-045",
+      "store": "apple",
+      "title": "Metadata accuracy",
+      "description": "Screenshots match app functionality",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-001",
+      "store": "google",
+      "title": "Target API level",
+      "description": "Target API 34+ required",
+      "severity": "error",
+      "check": "android-target-sdk"
+    },
+    {
+      "id": "PLAY-002",
+      "store": "google",
+      "title": "16KB page size",
+      "description": "Native libs must be 16KB aligned",
+      "severity": "error",
+      "check": "android-target-sdk"
+    },
+    {
+      "id": "PLAY-003",
+      "store": "google",
+      "title": "Privacy policy URL",
+      "description": "Privacy policy link required",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-004",
+      "store": "google",
+      "title": "Data safety form",
+      "description": "Complete Data safety section",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-005",
+      "store": "google",
+      "title": "App signing",
+      "description": "Play App Signing enabled",
+      "severity": "warning",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-006",
+      "store": "google",
+      "title": "Content rating",
+      "description": "IARC content rating",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-007",
+      "store": "google",
+      "title": "Store listing",
+      "description": "Complete store listing",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-008",
+      "store": "google",
+      "title": "Feature graphic",
+      "description": "1024x500 feature graphic",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-009",
+      "store": "google",
+      "title": "App icon",
+      "description": "512x512 hi-res icon",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-010",
+      "store": "google",
+      "title": "Permissions justification",
+      "description": "Dangerous permissions justified",
+      "severity": "warning",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-011",
+      "store": "google",
+      "title": "Background location",
+      "description": "Background location declaration",
+      "severity": "warning",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-012",
+      "store": "google",
+      "title": "Foreground service types",
+      "description": "Declare foreground service types",
+      "severity": "warning",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-013",
+      "store": "google",
+      "title": "AD_ID permission",
+      "description": "Declare AD_ID if using ads",
+      "severity": "warning",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-014",
+      "store": "google",
+      "title": "Photo/video permissions",
+      "description": "Granular media permissions",
+      "severity": "warning",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-015",
+      "store": "google",
+      "title": "Notification permission",
+      "description": "POST_NOTIFICATIONS for Android 13+",
+      "severity": "warning",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-016",
+      "store": "google",
+      "title": "Exact alarm permission",
+      "description": "SCHEDULE_EXACT_ALARM declaration",
+      "severity": "info",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-017",
+      "store": "google",
+      "title": "Billing library",
+      "description": "Google Play Billing Library 6+",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-018",
+      "store": "google",
+      "title": "Families policy",
+      "description": "Designed for Families compliance",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-019",
+      "store": "google",
+      "title": "Gambling apps",
+      "description": "Gambling app restrictions",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-020",
+      "store": "google",
+      "title": "Financial apps",
+      "description": "Financial services compliance",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-021",
+      "store": "google",
+      "title": "Health apps",
+      "description": "Health app declarations",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-022",
+      "store": "google",
+      "title": "News apps",
+      "description": "News app transparency",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-023",
+      "store": "google",
+      "title": "COVID apps",
+      "description": "COVID app requirements",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-024",
+      "store": "google",
+      "title": "Accessibility",
+      "description": "Accessibility best practices",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-025",
+      "store": "google",
+      "title": "Deceptive behavior",
+      "description": "No deceptive behavior",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-026",
+      "store": "google",
+      "title": "Malware",
+      "description": "No malware or harmful code",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-027",
+      "store": "google",
+      "title": "Impersonation",
+      "description": "No impersonation",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-028",
+      "store": "google",
+      "title": "Intellectual property",
+      "description": "Respect IP rights",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-029",
+      "store": "google",
+      "title": "User data",
+      "description": "Secure user data handling",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-030",
+      "store": "google",
+      "title": "Account deletion",
+      "description": "Account deletion mechanism",
+      "severity": "error",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-031",
+      "store": "google",
+      "title": "SDK requirements",
+      "description": "Third-party SDK policies",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-032",
+      "store": "google",
+      "title": "Android App Bundle",
+      "description": "AAB format required",
+      "severity": "error",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-033",
+      "store": "google",
+      "title": "64-bit support",
+      "description": "64-bit native code required",
+      "severity": "error",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-034",
+      "store": "google",
+      "title": "Max APK size",
+      "description": "APK/AAB size limits",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-035",
+      "store": "google",
+      "title": "Pre-registration",
+      "description": "Pre-registration requirements",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-036",
+      "store": "google",
+      "title": "Instant apps",
+      "description": "Instant app requirements",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-037",
+      "store": "google",
+      "title": "Wear OS",
+      "description": "Wear OS app requirements",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-038",
+      "store": "google",
+      "title": "Android TV",
+      "description": "TV app requirements",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-039",
+      "store": "google",
+      "title": "Auto apps",
+      "description": "Android Auto requirements",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-040",
+      "store": "google",
+      "title": "Chromebook",
+      "description": "Chromebook optimization",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-041",
+      "store": "google",
+      "title": "Foldables",
+      "description": "Large screen support",
+      "severity": "warning",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-042",
+      "store": "google",
+      "title": "Per-app language",
+      "description": "Per-app language preferences",
+      "severity": "info",
+      "check": "has-app-config"
+    },
+    {
+      "id": "PLAY-043",
+      "store": "google",
+      "title": "Photo picker",
+      "description": "Use photo picker API",
+      "severity": "warning",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-044",
+      "store": "google",
+      "title": "Backup rules",
+      "description": "Backup and restore rules",
+      "severity": "info",
+      "check": "has-android-manifest"
+    },
+    {
+      "id": "PLAY-045",
+      "store": "google",
+      "title": "Deep links",
+      "description": "App links verification",
+      "severity": "warning",
+      "check": "has-android-manifest"
+    }
+  ]
+}

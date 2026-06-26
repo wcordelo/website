@@ -1,0 +1,110 @@
+.health-score {
+  text-align: center;
+  padding: 2rem;
+}
+
+.health-score__ring {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  border: 8px solid var(--ring-color, #22c55e);
+  color: var(--text-primary);
+}
+
+.health-score__label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.health-score__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.stat-card {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-card__value {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.stat-card__label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.wizard {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.wizard__steps {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.wizard__step {
+  flex: 1;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  background: var(--bg);
+  color: var(--text-muted);
+}
+
+.wizard__step--active {
+  background: #3b82f6;
+  color: white;
+}
+
+.wizard__step--done {
+  background: #22c55e33;
+  color: #22c55e;
+}
+
+.wizard__content h3 {
+  margin: 0 0 0.5rem;
+}
+
+.wizard__actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.wizard__actions button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.wizard__actions .primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.wizard__actions .secondary {
+  background: var(--bg);
+  color: var(--text-primary);
+}

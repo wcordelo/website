@@ -7,5 +7,7 @@ export * from "./contamination/index.ts";
 export * from "./scaffold/index.ts";
 export * from "./report/index.ts";
 export * from "./api/index.ts";
+export * from "./qa/index.ts";
+export * from "./integrations/index.ts";
 export { runEval, generateReport, loadTasksFromDir } from "./orchestrator.ts";
 export * from "./taxonomy.ts";
