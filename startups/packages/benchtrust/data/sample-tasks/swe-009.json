@@ -1,0 +1,14 @@
+{
+  "id": "swe-009",
+  "title": "Fix broken idempotency key header",
+  "description": "Duplicate POST requests create multiple orders when Idempotency-Key is reused.",
+  "language": "python",
+  "files": [
+    "src/orders/create.py"
+  ],
+  "testCommand": "pytest tests/test_orders.py -q",
+  "temporal": {
+    "createdAt": "2025-05-02T00:00:00Z",
+    "licenseId": "partner-fintech-003"
+  }
+}

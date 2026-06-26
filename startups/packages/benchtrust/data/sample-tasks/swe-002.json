@@ -1,0 +1,14 @@
+{
+  "id": "swe-002",
+  "title": "Handle null tenant in middleware",
+  "description": "JWT middleware crashes on missing tenant claim. Return 401 instead of 500.",
+  "language": "python",
+  "files": [
+    "src/middleware/auth.py"
+  ],
+  "testCommand": "pytest tests/test_auth.py -q",
+  "temporal": {
+    "createdAt": "2025-04-01T00:00:00Z",
+    "licenseId": "partner-acme-001"
+  }
+}

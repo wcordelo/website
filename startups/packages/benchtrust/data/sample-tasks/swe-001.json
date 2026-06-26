@@ -1,0 +1,16 @@
+{
+  "id": "swe-001",
+  "title": "Fix off-by-one in pagination cursor",
+  "description": "API returns duplicate records when cursor offset equals page size. Fix get_users_page() in user_service.py.",
+  "language": "python",
+  "files": [
+    "src/user_service.py",
+    "tests/test_user_service.py"
+  ],
+  "testCommand": "pytest tests/test_user_service.py -q",
+  "temporal": {
+    "createdAt": "2025-03-12T00:00:00Z",
+    "licenseId": "partner-acme-001",
+    "sourceRepo": "acme/api-server"
+  }
+}

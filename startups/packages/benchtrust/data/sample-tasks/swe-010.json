@@ -1,0 +1,15 @@
+{
+  "id": "swe-010",
+  "title": "Patch memory leak in websocket fanout",
+  "description": "Subscriber map not cleaned on disconnect causes OOM under load.",
+  "language": "python",
+  "files": [
+    "src/ws/fanout.py",
+    "tests/test_fanout.py"
+  ],
+  "testCommand": "pytest tests/test_fanout.py -q",
+  "temporal": {
+    "createdAt": "2025-06-10T00:00:00Z",
+    "licenseId": "partner-realtime-006"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "swe-008-wide",
+  "title": "Migrate config loader to pydantic v2",
+  "description": "Update settings module and all 11 service entrypoints to pydantic v2 field validators.",
+  "language": "python",
+  "files": [
+    "src/config/settings.py",
+    "src/services/a.py",
+    "src/services/b.py",
+    "src/services/c.py",
+    "src/services/d.py",
+    "src/services/e.py",
+    "tests/test_config.py"
+  ],
+  "testCommand": "pytest tests/test_config.py -q",
+  "temporal": {
+    "createdAt": "2025-04-15T00:00:00Z",
+    "licenseId": "partner-acme-001"
+  }
+}

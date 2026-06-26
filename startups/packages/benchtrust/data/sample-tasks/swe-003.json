@@ -1,0 +1,15 @@
+{
+  "id": "swe-003",
+  "title": "Repair flaky retry backoff",
+  "description": "Exponential backoff uses float seconds causing race in scheduler.",
+  "language": "python",
+  "files": [
+    "src/jobs/retry.py",
+    "src/jobs/scheduler.py"
+  ],
+  "testCommand": "pytest tests/test_retry.py -q",
+  "temporal": {
+    "createdAt": "2025-02-18T00:00:00Z",
+    "licenseId": "partner-beta-002"
+  }
+}

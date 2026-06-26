@@ -1,0 +1,14 @@
+{
+  "id": "swe-005",
+  "title": "Fix SQL injection in search filter",
+  "description": "User-provided sort column is interpolated into query string.",
+  "language": "python",
+  "files": [
+    "src/db/search.py"
+  ],
+  "testCommand": "pytest tests/test_search.py -q",
+  "temporal": {
+    "createdAt": "2025-01-30T00:00:00Z",
+    "licenseId": "partner-acme-001"
+  }
+}

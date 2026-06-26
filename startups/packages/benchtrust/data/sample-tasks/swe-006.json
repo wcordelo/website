@@ -1,0 +1,14 @@
+{
+  "id": "swe-006",
+  "title": "Correct timezone in audit log",
+  "description": "Audit entries stored as local time instead of UTC.",
+  "language": "python",
+  "files": [
+    "src/audit/logger.py"
+  ],
+  "testCommand": "pytest tests/test_audit.py -q",
+  "temporal": {
+    "createdAt": "2025-06-01T00:00:00Z",
+    "licenseId": "partner-health-004"
+  }
+}

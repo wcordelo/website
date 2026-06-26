@@ -1,0 +1,20 @@
+{
+  "id": "swe-004-wide",
+  "title": "Refactor payment webhook handlers",
+  "description": "Unify Stripe and Adyen webhook validation across 8 route modules. Migrate shared HMAC logic to payment_core.",
+  "language": "python",
+  "files": [
+    "src/routes/stripe.py",
+    "src/routes/adyen.py",
+    "src/payment_core/hmac.py",
+    "src/payment_core/validate.py",
+    "src/routes/checkout.py",
+    "src/routes/refund.py",
+    "tests/test_webhooks.py"
+  ],
+  "testCommand": "pytest tests/test_webhooks.py -q",
+  "temporal": {
+    "createdAt": "2025-05-20T00:00:00Z",
+    "licenseId": "partner-fintech-003"
+  }
+}

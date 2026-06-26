@@ -1,0 +1,24 @@
+{
+  "name": "@theo/benchtrust",
+  "version": "0.1.0",
+  "description": "AI benchmark trust infrastructure — holdout vault, sealed runtime, pass@k stats",
+  "type": "module",
+  "bin": {
+    "benchtrust": "./src/cli.ts"
+  },
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json --noEmit",
+    "test": "bun test",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "api": "bun run src/api/server.ts",
+    "cli": "bun run src/cli.ts"
+  },
+  "dependencies": {
+    "hono": "^4.7.4"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^6.0.3"
+  }
+}

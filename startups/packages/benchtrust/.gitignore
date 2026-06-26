@@ -1,0 +1,5 @@
+# BenchTrust run artifacts
+.benchtrust-runs/
+data/.benchtrust-runs/
+dist/
+node_modules/

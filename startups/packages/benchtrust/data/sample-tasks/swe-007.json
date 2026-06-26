@@ -1,0 +1,15 @@
+{
+  "id": "swe-007",
+  "title": "Resolve race in cache invalidation",
+  "description": "Concurrent writes leave stale cache entries for product catalog.",
+  "language": "python",
+  "files": [
+    "src/cache/product.py",
+    "src/cache/keys.py"
+  ],
+  "testCommand": "pytest tests/test_cache.py -q",
+  "temporal": {
+    "createdAt": "2025-03-28T00:00:00Z",
+    "licenseId": "partner-retail-005"
+  }
+}
