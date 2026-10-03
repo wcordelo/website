@@ -13,3 +13,12 @@ dist
 !.env.example
 !.dev.vars.example
 .env.cf-pages-secrets.tmp
+
+# E2E artifacts (generated each run; keep directory via .gitkeep)
+e2e/artifacts/playwright-report/
+e2e/artifacts/test-output/
+e2e/artifacts/test-results.json
+e2e/artifacts/route-smoke.json
+e2e/artifacts/contact-form-validation.json
+e2e/artifacts/contact-api-invalid.json
+e2e/artifacts/screenshots/*.png
