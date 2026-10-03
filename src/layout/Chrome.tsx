@@ -13,8 +13,8 @@ export function Chrome({ children }: { children: ReactNode }) {
     <>
       <CursorBlob />
       <div className="noise" />
-      <Nav />
       <a className="skip-link" href="#main-content">Skip to content</a>
+      <Nav />
       <main className="page-wrap" id="main-content" tabIndex={-1}>{children}</main>
       <Footer />
       <TweaksPanel />
