@@ -1,8 +1,9 @@
-import { useEffect, useState, type FormEvent } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, type FormEvent } from 'react';
+import { RESUME_DATA } from '../data/resume';
 import { Chrome } from '../layout/Chrome';
 import { submitContactForm } from '../lib/contactApi';
 import {
+  CONTACT_TOPIC_LABELS,
   CONTACT_TOPIC_OPTIONS,
   type ContactTopicOption,
   validateContactFields,
@@ -133,17 +134,17 @@ function ContactForm() {
           name="topic"
           required
           value={form.topic}
-            onChange={(e) => {
-              clearFieldError('topic');
-              setForm({ ...form, topic: e.target.value as ContactTopicOption });
-            }}
+          onChange={(e) => {
+            clearFieldError('topic');
+            setForm({ ...form, topic: e.target.value as ContactTopicOption });
+          }}
           disabled={submitting}
           aria-invalid={fieldErrors.topic ? true : undefined}
           aria-describedby={fieldErrors.topic ? 'contact-topic-error' : undefined}
         >
           {CONTACT_TOPIC_OPTIONS.map((t) => (
             <option key={t} value={t}>
-              {t}
+              {CONTACT_TOPIC_LABELS[t]}
             </option>
           ))}
         </select>
@@ -166,7 +167,7 @@ function ContactForm() {
             clearFieldError('message');
             setForm({ ...form, message: e.target.value });
           }}
-          placeholder="Tell me what you're building, stage, and what you need."
+          placeholder="Describe your project, team, and timeline."
           disabled={submitting}
           aria-invalid={fieldErrors.message ? true : undefined}
           aria-describedby={fieldErrors.message ? 'contact-message-error' : undefined}
@@ -184,50 +185,36 @@ function ContactForm() {
       </div>
       {error && <div className="form-error">{error}</div>}
       {sent && (
-        <div className="form-success">Thanks — I&apos;ll follow up within 48 hours.</div>
+        <div className="form-success">Thanks. I&apos;ll follow up within 48 hours.</div>
       )}
     </form>
   );
 }
 
 export function ContactPage() {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.hash !== '#get-in-touch') return;
-    const el = document.getElementById('get-in-touch');
-    if (!el) return;
-    const id = window.requestAnimationFrame(() => {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-    return () => cancelAnimationFrame(id);
-  }, [location.pathname, location.hash]);
-
   return (
     <>
       <ContactFaqJsonLd />
       <PageHelmet
         title="Contact · William Lopez-Cordero"
-        description="Engagements, consulting, and collaborations — Los Angeles, remote-friendly. FAQ for availability and stack."
+        description="Contact William Lopez-Cordero about AI enablement, workflow automation, IT operations, or a project."
         path="/contact"
       />
       <Chrome>
         <section className="contact-hero container">
           <div className="page-label">/ Contact · 04</div>
           <h1 className="contact-hero-title">
-            Let&apos;s build{' '}
-            <br />
-            something <span className="accent">hard.</span>
+            Get in <span className="accent">touch.</span>
           </h1>
           <p className="contact-hero-sub">
-            I work with a small number of teams each year on protocol architecture, infra scaling, and turning 0→1
-            products into production systems. If that&apos;s you — tell me what you&apos;re building.
+            Tell me about your project, team, and timeline, or ask about AI enablement,
+            workflow automation, and IT operations.
           </p>
 
           <div className="availability">
             <span className="availability-line">
               <span className="availability-dot" />
-              Open for engagements · from late April 2026
+              {RESUME_DATA.identity.availability}
             </span>
             <span className="availability-meta">Reply within 48 hours</span>
           </div>
@@ -245,7 +232,7 @@ export function ContactPage() {
         <section className="container contact-faq-section">
           <div className="section-head contact-faq-head">
             <span className="section-idx">FAQ</span>
-            <h2 className="section-kicker">Quick answers</h2>
+            <h2 className="section-kicker">Questions</h2>
           </div>
           <div className="about-bio-prose contact-faq-list">
             {SITE_FAQ.map((item) => (

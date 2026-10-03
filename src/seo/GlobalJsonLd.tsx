@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { RESUME_DATA } from '../data/resume';
+import { CURRENT_ROLE, RESUME_DATA } from '../data/resume';
 import { getSiteUrl } from '../lib/siteUrl';
 import { SITE_FAQ } from './siteFaq';
 
@@ -16,7 +16,8 @@ function personLd() {
     name: identity.name,
     ...(identity.email ? { email: identity.email } : {}),
     ...(identity.phone ? { telephone: identity.phone } : {}),
-    jobTitle: 'Engineer',
+    jobTitle: CURRENT_ROLE.role,
+    worksFor: { '@type': 'Organization', name: CURRENT_ROLE.org },
     description: RESUME_DATA.hero.subtitle,
     ...(sameAs.length > 0 ? { sameAs } : {}),
     url: base || undefined,

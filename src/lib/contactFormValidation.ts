@@ -8,6 +8,14 @@ export const CONTACT_TOPIC_OPTIONS = [
 
 export type ContactTopicOption = (typeof CONTACT_TOPIC_OPTIONS)[number];
 
+export const CONTACT_TOPIC_LABELS: Record<ContactTopicOption, string> = {
+  'Consulting — help us scale': 'AI and automation',
+  'Full-time role': 'Job opportunity',
+  'Contract engagement': 'IT and software projects',
+  'Speaking / writing': 'Speaking or writing',
+  'Just saying hi': 'General inquiry',
+};
+
 const NAME_RE = /^[\p{L}\p{M}][\p{L}\p{M}\s.'-]{1,199}$/u;
 /** Practical email — aligned with server checks */
 export const CONTACT_EMAIL_RE =

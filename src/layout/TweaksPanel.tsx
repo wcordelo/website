@@ -13,6 +13,7 @@ const rows: RowDef[] = [
     key: 'theme',
     label: 'Color',
     options: [
+      ['revolut', 'Revolut'],
       ['ink', 'Ink & Flame'],
       ['deep-space', 'Deep Space'],
       ['plasma', 'Plasma'],
@@ -40,6 +41,7 @@ const rows: RowDef[] = [
     key: 'heroVariant',
     label: 'Hero',
     options: [
+      ['revolut', 'Revolut'],
       ['type', 'Type'],
       ['orbit', 'Orbit'],
       ['terminal', 'Terminal'],
