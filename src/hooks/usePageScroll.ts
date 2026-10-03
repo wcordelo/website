@@ -37,6 +37,9 @@ export function usePageScroll() {
       if (destination !== current) return;
       event.preventDefault();
       scrollToHashTarget(url.hash);
+      const target = getHashTarget(url.hash);
+      target?.setAttribute('tabindex', '-1');
+      target?.focus({ preventScroll: true });
     };
     document.addEventListener('click', handleClick);
     return () => document.removeEventListener('click', handleClick);
@@ -64,6 +67,11 @@ export function usePageScroll() {
 
     let interrupted = false;
     move();
+    if (navigationType !== 'POP') {
+      const focusTarget = target ?? document.getElementById('main-content');
+      focusTarget?.setAttribute('tabindex', '-1');
+      focusTarget?.focus({ preventScroll: true });
+    }
     const frame = requestAnimationFrame(() => {
       if (!interrupted) move();
     });

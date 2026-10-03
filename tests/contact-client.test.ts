@@ -28,3 +28,19 @@ test('missing delivery settings return unavailable', async () => {
   respond({ available: false });
   expect(await getContactAvailability()).toBe(false);
 });
+
+test('availability failure is unknown rather than confirmed unavailable', async () => {
+  globalThis.fetch = mock(async () => { throw new Error('Network unavailable'); }) as unknown as typeof fetch;
+  expect(await getContactAvailability()).toBeNull();
+});
+
+test('requests carry bounded abort signals', async () => {
+  const fetchMock = mock(async (_input: unknown, init?: RequestInit) => {
+    expect(init?.signal).toBeInstanceOf(AbortSignal);
+    return Response.json({ available: false, ok: true });
+  });
+  globalThis.fetch = fetchMock as unknown as typeof fetch;
+  await getContactAvailability();
+  await submitContactForm(payload);
+  expect(fetchMock).toHaveBeenCalledTimes(2);
+});

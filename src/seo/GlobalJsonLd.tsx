@@ -14,8 +14,6 @@ function personLd() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: identity.name,
-    ...(identity.email ? { email: identity.email } : {}),
-    ...(identity.phone ? { telephone: identity.phone } : {}),
     jobTitle: CURRENT_ROLE.role,
     worksFor: { '@type': 'Organization', name: CURRENT_ROLE.org },
     description: RESUME_DATA.hero.subtitle,

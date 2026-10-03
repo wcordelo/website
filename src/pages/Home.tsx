@@ -22,6 +22,7 @@ function HeroType() {
   const { hero } = RESUME_DATA;
   const [cycleIdx, setCycleIdx] = useState(0);
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const id = setInterval(() => setCycleIdx((i) => (i + 1) % hero.titles.length), 2400);
     return () => clearInterval(id);
   }, [hero.titles.length]);
@@ -88,6 +89,7 @@ function HeroOrbit() {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let raf = 0;
     const orbits = [
       { r: 0.15, speed: 0.8, size: 4, label: 'software' },

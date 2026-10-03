@@ -29,14 +29,15 @@ function ContactForm() {
     message: '',
   });
   const [sent, setSent] = useState(false);
-  const [delivery, setDelivery] = useState<'checking' | 'available' | 'unavailable'>('checking');
+  const [delivery, setDelivery] = useState<'checking' | 'available' | 'unavailable' | 'error'>('checking');
+  const [availabilityCheck, setAvailabilityCheck] = useState(0);
   useEffect(() => {
     let cancelled = false;
     void getContactAvailability().then((available) => {
-      if (!cancelled) setDelivery(available ? 'available' : 'unavailable');
+      if (!cancelled) setDelivery(available === null ? 'error' : available ? 'available' : 'unavailable');
     });
     return () => { cancelled = true; };
-  }, []);
+  }, [availabilityCheck]);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<ReturnType<typeof validateContactFields>>({});
@@ -193,12 +194,15 @@ function ContactForm() {
           {submitting ? 'Sending…' : delivery === 'checking' ? 'Checking…' : 'Send'} <span className="arrow">→</span>
         </button>
       </div>
-      {delivery === 'unavailable' && (
-        <p className="form-error" role="status">Message delivery is temporarily unavailable. Please check back later.</p>
+      {(delivery === 'unavailable' || delivery === 'error') && (
+        <div className="form-error">
+          <p role="status">{delivery === 'error' ? 'Could not check message delivery. Please try again.' : 'Message delivery is temporarily unavailable. Please check back later.'}</p>
+          <button type="button" className="btn" onClick={() => { setDelivery('checking'); setAvailabilityCheck((value) => value + 1); }}>Check again</button>
+        </div>
       )}
       {error && <div className="form-error" role="alert">{error}</div>}
       {sent && (
-        <div className="form-success">Thanks. I&apos;ll follow up within 48 hours.</div>
+        <div className="form-success" role="status">Thanks. I&apos;ll follow up within 48 hours.</div>
       )}
     </form>
   );

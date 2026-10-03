@@ -42,14 +42,7 @@ export default {
       return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
     }
 
-    let res = await env.ASSETS.fetch(request);
-    if (res.status === 404 && request.method === 'GET') {
-      const accept = request.headers.get('Accept') ?? '';
-      if (accept.includes('text/html')) {
-        const indexReq = new Request(new URL('/index.html', request.url), request);
-        res = await env.ASSETS.fetch(indexReq);
-      }
-    }
+    const res = await env.ASSETS.fetch(request);
     return finalizeResponse(res, url.pathname);
   },
 };

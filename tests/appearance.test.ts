@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { useTweaks, type PortfolioTweaks } from '../src/hooks/useTweaks';
+import { readStoredTweaks, type PortfolioTweaks } from '../src/hooks/useTweaks';
 
 const boot = readFileSync(new URL('../index.html', import.meta.url), 'utf8').match(/<script>([\s\S]*?)<\/script>/)![1];
 const originalStorage = globalThis.localStorage;
@@ -17,7 +17,7 @@ function readAppearance(value: string | null, blocked = false) {
   globalThis.localStorage = storage as unknown as Storage;
   let result: PortfolioTweaks | undefined;
   function Profile() {
-    [result] = useTweaks();
+    result = readStoredTweaks();
     return null;
   }
   renderToStaticMarkup(createElement(Profile));

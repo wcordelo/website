@@ -27,8 +27,7 @@ function applyTweaks(t: PortfolioTweaks) {
   root.dataset.sectionOrder = t.sectionOrder;
 }
 
-export function useTweaks(): [PortfolioTweaks, (patch: Partial<PortfolioTweaks>) => void] {
-  const [tweaks, setTweaks] = useState<PortfolioTweaks>(() => {
+export function readStoredTweaks(): PortfolioTweaks {
     try {
       const saved = localStorage.getItem('portfolio-tweaks');
       const parsed = saved ? JSON.parse(saved) : {};
@@ -41,9 +40,19 @@ export function useTweaks(): [PortfolioTweaks, (patch: Partial<PortfolioTweaks>)
     } catch {
       return { ...TWEAK_DEFAULTS };
     }
-  });
+}
+
+export function useTweaks(): [PortfolioTweaks, (patch: Partial<PortfolioTweaks>) => void] {
+  const [tweaks, setTweaks] = useState<PortfolioTweaks>(TWEAK_DEFAULTS);
 
   useLayoutEffect(() => {
+    const saved = readStoredTweaks();
+    applyTweaks(saved);
+    setTweaks(saved);
+  }, []);
+
+  useLayoutEffect(() => {
+    if (tweaks === TWEAK_DEFAULTS) return;
     applyTweaks(tweaks);
     try {
       localStorage.setItem('portfolio-tweaks', JSON.stringify({ ...tweaks, version: 2 }));
