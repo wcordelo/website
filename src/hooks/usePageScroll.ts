@@ -1,11 +1,46 @@
-import { useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { useLocation, useNavigationType } from 'react-router-dom';
 
 const positions = new Map<string, number>();
 
+function getHashTarget(hash: string): HTMLElement | null {
+  if (!hash) return null;
+  try {
+    return document.getElementById(decodeURIComponent(hash.slice(1)));
+  } catch {
+    return null;
+  }
+}
+
+function scrollToHashTarget(hash: string) {
+  const target = getHashTarget(hash);
+  if (!target) return;
+  target.classList.add('in');
+  target.scrollIntoView({ block: 'start', behavior: 'instant' });
+}
+
 export function usePageScroll() {
   const location = useLocation();
   const navigationType = useNavigationType();
+
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+      const anchor = (event.target as Element | null)?.closest('a[href]');
+      if (!(anchor instanceof HTMLAnchorElement) || anchor.target === '_blank') return;
+      const url = new URL(anchor.href);
+      if (url.origin !== window.location.origin || !url.hash) return;
+      const destination = `${url.pathname}${url.hash}`;
+      const current = `${location.pathname}${location.hash}`;
+      if (destination !== current) return;
+      event.preventDefault();
+      scrollToHashTarget(url.hash);
+    };
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, [location.pathname, location.hash]);
 
   useLayoutEffect(() => {
     const previousRestoration = window.history.scrollRestoration;
@@ -15,19 +50,13 @@ export function usePageScroll() {
 
     const entry = `${location.key}:${location.pathname}${location.hash}`;
     const restoredPosition = navigationType === 'POP' ? positions.get(entry) : undefined;
-    let target: HTMLElement | null = null;
-    try {
-      target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-    } catch {
-      // Malformed hashes should still allow page navigation.
-    }
+    const target = getHashTarget(location.hash);
 
     const move = () => {
       if (restoredPosition !== undefined) {
         window.scrollTo({ top: restoredPosition, behavior: 'instant' });
       } else if (target) {
-        target.classList.add('in');
-        target.scrollIntoView({ block: 'start', behavior: 'instant' });
+        scrollToHashTarget(location.hash);
       } else {
         window.scrollTo({ top: 0, behavior: 'instant' });
       }

@@ -6,7 +6,7 @@ export function RevolutHero() {
   const [givenName, ...familyName] = identity.name.split(' ');
 
   return (
-    <section className="revolut-hero" aria-labelledby="revolut-title">
+    <section className="revolut-hero container" aria-labelledby="revolut-title">
       <div className="revolut-hero-meta">
         <span className="tag"><span className="status-dot" />{identity.availability}</span>
         <span>{identity.location}</span>
