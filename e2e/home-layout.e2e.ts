@@ -32,8 +32,10 @@ for (const delayed of ['none', 'stylesheet', 'font'] as const) {
         }
       }).observe({ type: 'layout-shift', buffered: true });
     });
+    const delayedRequests: string[] = [];
     if (delayed !== 'none') {
-      await page.route(delayed === 'stylesheet' ? '**/src/**/*.css' : 'https://fonts.gstatic.com/**', async (route) => {
+      await page.route(delayed === 'stylesheet' ? /\/(?:assets|src)\/[^?]+\.css(?:\?|$)/ : 'https://fonts.gstatic.com/**', async (route) => {
+        delayedRequests.push(route.request().url());
         await new Promise((resolve) => setTimeout(resolve, 1500));
         await route.continue();
       });
@@ -41,6 +43,7 @@ for (const delayed of ['none', 'stylesheet', 'font'] as const) {
     await page.goto('/', { waitUntil: 'networkidle' });
     await page.evaluate(() => document.fonts.ready);
     await expect(page.getByRole('heading', { name: 'William Lopez-Cordero', exact: true })).toBeVisible();
+    if (delayed !== 'none') expect(delayedRequests.length).toBeGreaterThan(0);
     const entries = await page.evaluate(() => window.layoutShiftEntries);
     let maxCls = 0, sessionValue = 0, sessionStart = 0, previousTime = 0;
     for (const entry of entries.filter((item) => !item.recentInput)) {
@@ -53,7 +56,7 @@ for (const delayed of ['none', 'stylesheet', 'font'] as const) {
       maxCls = Math.max(maxCls, sessionValue);
     }
     await testInfo.attach('layout-shift-attribution', {
-      body: JSON.stringify({ delayed, maxCls, entries }, null, 2), contentType: 'application/json',
+      body: JSON.stringify({ delayed, delayedRequests, maxCls, entries }, null, 2), contentType: 'application/json',
     });
     await page.screenshot({ path: testInfo.outputPath('home-mobile.png') });
     expect(maxCls, JSON.stringify(entries)).toBeLessThan(0.1);
