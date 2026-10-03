@@ -62,3 +62,20 @@ test('availability reports configured delivery without contacting the provider',
   expect(await response.json()).toEqual({ available: true });
   expect(outbound).not.toHaveBeenCalled();
 });
+
+const validContact = JSON.stringify({ name: 'Test User', email: 'sender@example.test', topic: 'Full-time role', message: 'A unit test message.' });
+const configuredEnv = { ...env, RESEND_API_KEY: 'unit-test-only', CONTACT_INBOX_EMAIL: 'inbox@example.test' };
+
+test.each([new TypeError('network failed'), new DOMException('request timed out', 'TimeoutError')])('delivery network failure returns a controlled response: %s', async (error) => {
+  globalThis.fetch = mock(async () => { throw error; }) as unknown as typeof fetch;
+  const response = await worker.fetch(new Request('https://example.test/api/contact', { method: 'POST', body: validContact }), configuredEnv);
+  expect(response.status).toBe(502);
+  expect(await response.json()).toEqual({ error: 'Failed to send email' });
+});
+
+test('delivery provider rejection does not expose provider details', async () => {
+  globalThis.fetch = mock(async () => Response.json({ message: 'private provider detail' }, { status: 403 })) as unknown as typeof fetch;
+  const response = await worker.fetch(new Request('https://example.test/api/contact', { method: 'POST', body: validContact }), configuredEnv);
+  expect(response.status).toBe(502);
+  expect(await response.json()).toEqual({ error: 'Failed to send email' });
+});

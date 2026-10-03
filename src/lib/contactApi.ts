@@ -6,7 +6,7 @@ export type ContactPayload = {
 };
 
 export async function submitContactForm(payload: ContactPayload): Promise<{ ok: true } | { ok: false; error: string }> {
-  const base = (import.meta.env.VITE_CONTACT_API_BASE ?? '').replace(/\/$/, '');
+  const base = (import.meta.env?.VITE_CONTACT_API_BASE ?? '').replace(/\/$/, '');
   const url = `${base}/api/contact`;
 
   let res: Response;
@@ -15,10 +15,11 @@ export async function submitContactForm(payload: ContactPayload): Promise<{ ok: 
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(15000),
     });
   } catch {
     const devHint =
-      import.meta.env.DEV && !(import.meta.env.VITE_CONTACT_API_BASE ?? '').trim()
+      import.meta.env?.DEV && !(import.meta.env?.VITE_CONTACT_API_BASE ?? '').trim()
         ? ' Start the contact API with `bun run dev` (recommended) or `bun run dev:api` in another terminal.'
         : '';
     return { ok: false, error: `Could not reach the server.${devHint}` };
@@ -46,11 +47,11 @@ export async function submitContactForm(payload: ContactPayload): Promise<{ ok: 
 }
 
 export async function getContactAvailability(): Promise<boolean | null> {
-  const base = (import.meta.env.VITE_CONTACT_API_BASE ?? '').replace(/\/$/, '');
+  const base = (import.meta.env?.VITE_CONTACT_API_BASE ?? '').replace(/\/$/, '');
   try {
-    const response = await fetch(`${base}/api/contact/status`);
+    const response = await fetch(`${base}/api/contact/status`, { signal: AbortSignal.timeout(8000), cache: 'no-store' });
     const data = await response.json();
-    return response.ok && typeof data.available === 'boolean' ? data.available : null;
+    return response.ok && data !== null && typeof data === 'object' && typeof data.available === 'boolean' ? data.available : null;
   } catch {
     return null;
   }

@@ -1,6 +1,5 @@
+export const SITE_URL = 'https://wcordelo.com';
+
 export function getSiteUrl(): string {
-  const env = import.meta.env.VITE_SITE_URL?.replace(/\/$/, '');
-  if (env) return env;
-  if (typeof window !== 'undefined') return window.location.origin;
-  return '';
+  return import.meta.env?.VITE_SITE_URL?.replace(/\/$/, '') || SITE_URL;
 }

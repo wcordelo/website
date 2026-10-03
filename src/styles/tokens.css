@@ -682,3 +682,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   letter-spacing: 0.1em;
   font-size: 0.78rem;
 }
+
+.skip-link { position: fixed; top: 0.5rem; left: 1rem; z-index: 2000; padding: 0.75rem 1rem; background: var(--bg); color: var(--text); border: 2px solid var(--accent); transform: translateY(-200%); }
+.skip-link:focus { transform: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  html, *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}

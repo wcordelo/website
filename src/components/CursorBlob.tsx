@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 export function CursorBlob() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches || document.documentElement.dataset.theme === 'revolut') return;
     let raf = 0;
     const target = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const pos = { ...target };

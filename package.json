@@ -7,7 +7,7 @@
     "dev": "concurrently -n site,api -c cyan,magenta \"vite\" \"bun run dev:api\"",
     "dev:site": "vite",
     "dev:api": "bun run server/contact-api.ts",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && bun run scripts/prerender.tsx",
     "preview": "bun run build && wrangler dev",
     "deploy": "bun run build && wrangler deploy",
     "cf:login": "wrangler login",

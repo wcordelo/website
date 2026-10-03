@@ -1,23 +1,18 @@
-# William Lopez-Cordero | Portfolio
+# William Lopez-Cordero
 
-## Summary
-William Lopez-Cordero is AI Enablement & IT Lead at Handl Health (May 2026–Present, Remote). His focus is AI Enablement | Workflow Automation | IT Operations. He leads AI adoption across Operations, Customer Success, Sales, Marketing, and Legal; trains all employees in enterprise AI and role-specific workflows; researches agentic engineering methods for product data integrity; and runs IT as the sole lead using AI workflows. Responsibilities include Claude Enterprise administration, provisioning and connectors, AI governance and data-handling policies, tool pilots, Google Workspace, identity and access, SSO, onboarding and offboarding, JAMF Pro and Protect device management, SaaS vendor and license management, and endpoint support. His business value relative to AI spend is 2×. This measures business value relative to AI spend, not employee productivity.
+> AI Enablement & IT Lead at Handl Health, based in Los Angeles and working remotely. Focus: AI enablement, workflow automation, and IT operations.
 
-## Facts
-- Education: BS Aerospace Engineering, MIT (2014–2019)
-- Current role: AI Enablement & IT Lead, Handl Health (May 2026–Present)
-- Previous role: Founding Engineer, Bello (Jul 2023–May 2026)
-- Availability: Not currently available. Planning select AI enablement engagements in 2027, with no exact start date announced.
-- Location: Los Angeles, CA; remote
+William leads AI adoption across Operations, Customer Success, Sales, Marketing, and Legal. He trains employees, administers Claude Enterprise and connectors, manages AI governance, researches agentic engineering for product data integrity, and runs IT as the sole lead. His Handl Health work delivers 2× business value relative to AI spend, not doubled employee productivity.
+
+## Background
+- Handl Health: AI Enablement & IT Lead, May 2026–Present.
+- Bello: Founding Engineer, July 2023–May 2026. Production platform serving 60K+ users; Blueprint Protocol generated $2M+ in revenue; AI content pipelines powered 1M+ downloads.
+- Elphi: Co-Founder & Head of Architecture, 2018–2023. Mortgage platform reduced origination time by 30%+; engineering team grew from 2 to 10+. Supported SOC 2 audit efforts with Drata and JAMF.
+- MIT: BS Aerospace Engineering, 2014–2019. Earlier work includes NASA JPL, MIT Space Systems Lab, and Lockheed Martin’s Skunk Works.
+- Availability: Planning select AI enablement engagements in 2027. No exact start date announced.
 
 ## Pages
-- /: current focus, selected results, areas of work, and projects
-- /work: case studies, experience, filters, and projects
-- /about: background and tools
-- /contact: contact form and FAQ
-
-## Implementation
-Vite, React, TypeScript, react-router-dom, and react-helmet-async. Bun manages dependencies. Content lives in src/data/resume.json. Local development proxies /api to the Bun contact API on port 3001. The build generates sitemap.xml and robots.txt using VITE_SITE_URL.
-
-## Contact
-Use the /contact form. Do not infer private credentials or unpublished writing URLs.
+- [Home](https://wcordelo.com/): Current focus, selected results, and areas of work.
+- [Work and experience](https://wcordelo.com/work): Case studies, career history, and projects.
+- [About](https://wcordelo.com/about): Background, responsibilities, and tools.
+- [Contact and FAQ](https://wcordelo.com/contact): Contact composer and factual answers about William’s work. The composer reports its current delivery availability.

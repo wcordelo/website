@@ -47,20 +47,27 @@ async function sendViaResend(
   apiKey: string,
   params: { from: string; to: string; replyTo: string; subject: string; html: string },
 ): Promise<{ ok: true; id: string | null } | { ok: false }> {
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: params.from,
-      to: [params.to],
-      reply_to: params.replyTo,
-      subject: params.subject,
-      html: params.html,
-    }),
-  });
+  let res: Response;
+  try {
+    res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: params.from,
+        to: [params.to],
+        reply_to: params.replyTo,
+        subject: params.subject,
+        html: params.html,
+      }),
+      signal: AbortSignal.timeout(10000),
+    });
+  } catch {
+    console.error('Email delivery request failed');
+    return { ok: false };
+  }
 
   let data: unknown;
   try {
@@ -70,7 +77,7 @@ async function sendViaResend(
   }
 
   if (!res.ok) {
-    console.error('Resend error:', data);
+    console.error('Email delivery provider returned status:', res.status);
     return { ok: false };
   }
 
