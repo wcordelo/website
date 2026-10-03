@@ -87,19 +87,19 @@ export async function handleContactRequest(req: Request, env: ContactEnv): Promi
   }
 
   const url = new URL(req.url);
-  if (req.method !== 'POST' || url.pathname !== '/api/contact') {
+  if (url.pathname === '/api/contact/status' && req.method === 'GET') {
+    return Response.json(
+      { available: Boolean(env.RESEND_API_KEY && env.CONTACT_INBOX_EMAIL) },
+      { headers: { ...corsHeaders(req), 'Cache-Control': 'no-store' } },
+    );
+  }
+
+  if (url.pathname !== '/api/contact') {
     return new Response('Not Found', { status: 404 });
   }
 
-  if (!env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY is not set');
-    return Response.json({ error: 'Server misconfigured' }, { status: 500, headers: corsHeaders(req) });
-  }
-
-  const to = env.CONTACT_INBOX_EMAIL;
-  if (!to) {
-    console.error('CONTACT_INBOX_EMAIL is not set');
-    return Response.json({ error: 'Server misconfigured' }, { status: 500, headers: corsHeaders(req) });
+  if (req.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'POST, OPTIONS' } });
   }
 
   let body: unknown;
@@ -130,6 +130,17 @@ export async function handleContactRequest(req: Request, env: ContactEnv): Promi
   }
   if (message.length < MIN_MSG || message.length > MAX_MSG) {
     return Response.json({ error: 'Invalid message' }, { status: 400, headers: corsHeaders(req) });
+  }
+
+  if (!env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY is not set');
+    return Response.json({ error: 'Message delivery is temporarily unavailable. Please try again later.' }, { status: 500, headers: corsHeaders(req) });
+  }
+
+  const to = env.CONTACT_INBOX_EMAIL;
+  if (!to) {
+    console.error('CONTACT_INBOX_EMAIL is not set');
+    return Response.json({ error: 'Message delivery is temporarily unavailable. Please try again later.' }, { status: 500, headers: corsHeaders(req) });
   }
 
   const from = env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev';

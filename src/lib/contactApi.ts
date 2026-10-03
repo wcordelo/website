@@ -39,5 +39,19 @@ export async function submitContactForm(payload: ContactPayload): Promise<{ ok: 
     return { ok: false, error: msg };
   }
 
+  if (typeof data !== 'object' || data === null || !('ok' in data) || data.ok !== true) {
+    return { ok: false, error: 'Unexpected response' };
+  }
   return { ok: true };
+}
+
+export async function getContactAvailability(): Promise<boolean | null> {
+  const base = (import.meta.env.VITE_CONTACT_API_BASE ?? '').replace(/\/$/, '');
+  try {
+    const response = await fetch(`${base}/api/contact/status`);
+    const data = await response.json();
+    return response.ok && typeof data.available === 'boolean' ? data.available : null;
+  } catch {
+    return null;
+  }
 }

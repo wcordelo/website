@@ -1,7 +1,7 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { RESUME_DATA } from '../data/resume';
 import { Chrome } from '../layout/Chrome';
-import { submitContactForm } from '../lib/contactApi';
+import { getContactAvailability, submitContactForm } from '../lib/contactApi';
 import {
   CONTACT_TOPIC_LABELS,
   CONTACT_TOPIC_OPTIONS,
@@ -29,6 +29,14 @@ function ContactForm() {
     message: '',
   });
   const [sent, setSent] = useState(false);
+  const [delivery, setDelivery] = useState<'checking' | 'available' | 'unavailable'>('checking');
+  useEffect(() => {
+    let cancelled = false;
+    void getContactAvailability().then((available) => {
+      if (!cancelled) setDelivery(available ? 'available' : 'unavailable');
+    });
+    return () => { cancelled = true; };
+  }, []);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<ReturnType<typeof validateContactFields>>({});
@@ -45,6 +53,8 @@ function ContactForm() {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
+    setSent(false);
+    if (delivery !== 'available') return;
     const trimmed = {
       name: form.name.trim(),
       email: form.email.trim(),
@@ -179,11 +189,14 @@ function ContactForm() {
         )}
       </div>
       <div className="form-submit">
-        <button type="submit" className="btn btn-primary" disabled={submitting}>
-          {submitting ? 'Sending…' : 'Send'} <span className="arrow">→</span>
+        <button type="submit" className="btn btn-primary" disabled={submitting || delivery !== 'available'}>
+          {submitting ? 'Sending…' : delivery === 'checking' ? 'Checking…' : 'Send'} <span className="arrow">→</span>
         </button>
       </div>
-      {error && <div className="form-error">{error}</div>}
+      {delivery === 'unavailable' && (
+        <p className="form-error" role="status">Message delivery is temporarily unavailable. Please check back later.</p>
+      )}
+      {error && <div className="form-error" role="alert">{error}</div>}
       {sent && (
         <div className="form-success">Thanks. I&apos;ll follow up within 48 hours.</div>
       )}

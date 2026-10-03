@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import { cloudflare } from "@cloudflare/vite-plugin";
 const criticalShellPath = fileURLToPath(new URL('./src/critical-shell.css', import.meta.url));
 
@@ -27,16 +27,17 @@ function perfFirstPaintPlugin() {
   };
 }
 
-function emitSeoArtifacts() {
+function emitSeoArtifacts(): Plugin {
   return {
     name: 'emit-seo-artifacts',
     closeBundle() {
+      if (this.environment.name !== 'client') return;
       const base = (process.env.VITE_SITE_URL || 'http://127.0.0.1:5173').replace(/\/$/, '');
       const paths = ['/', '/work', '/about', '/contact'];
       const locs = paths.map((p) => `  <url>\n    <loc>${base}${p === '/' ? '/' : p}</loc>\n  </url>`);
       const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${locs.join('\n')}\n</urlset>\n`;
       const robots = `User-agent: *\nAllow: /\n\nSitemap: ${base}/sitemap.xml\n`;
-      const outDir = resolve('dist');
+      const outDir = resolve(this.environment.config.build.outDir);
       writeFileSync(resolve(outDir, 'sitemap.xml'), sitemap);
       writeFileSync(resolve(outDir, 'robots.txt'), robots);
     },

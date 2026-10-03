@@ -29,18 +29,18 @@ export function usePageScroll() {
         return;
       }
       const anchor = (event.target as Element | null)?.closest('a[href]');
-      if (!(anchor instanceof HTMLAnchorElement) || anchor.target === '_blank') return;
+      if (!(anchor instanceof HTMLAnchorElement) || (anchor.target && anchor.target !== '_self') || anchor.hasAttribute('download')) return;
       const url = new URL(anchor.href);
       if (url.origin !== window.location.origin || !url.hash) return;
-      const destination = `${url.pathname}${url.hash}`;
-      const current = `${location.pathname}${location.hash}`;
+      const destination = `${url.pathname}${url.search}${url.hash}`;
+      const current = `${location.pathname}${location.search}${location.hash}`;
       if (destination !== current) return;
       event.preventDefault();
       scrollToHashTarget(url.hash);
     };
     document.addEventListener('click', handleClick);
     return () => document.removeEventListener('click', handleClick);
-  }, [location.pathname, location.hash]);
+  }, [location.pathname, location.search, location.hash]);
 
   useLayoutEffect(() => {
     const previousRestoration = window.history.scrollRestoration;
