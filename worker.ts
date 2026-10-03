@@ -1,6 +1,6 @@
 /**
- * Standalone Cloudflare Worker: static assets from ./dist + POST /api/contact.
- * Deploy: bun run cf:worker:deploy  (default wrangler.toml)
+ * Contact requests run in this Worker; Vite and Wrangler serve the site assets.
+ * Deploy with bun run cf:worker:deploy.
  */
 import type { ContactEnv } from './server/contact-handler';
 import { handleContactRequest } from './server/contact-handler';
@@ -35,7 +35,7 @@ function finalizeResponse(res: Response, pathname: string): Response {
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
-    if (url.pathname === '/api/contact') {
+    if (url.pathname === '/api/contact' || url.pathname === '/api/contact/status') {
       const res = await handleContactRequest(request, env);
       const headers = new Headers(res.headers);
       applySecurityHeaders(headers);

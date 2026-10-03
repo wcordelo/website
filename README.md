@@ -1,6 +1,6 @@
 # Portfolio
 
-Personal site for William Lopez-Cordero — Vite, React 19, TypeScript, and plain CSS (design tokens in `src/styles/`). Content for metrics, disciplines, timeline, case studies, and consulting largely lives in **`src/data/resume.json`**.
+Personal site for William Lopez-Cordero. Vite, React 19, TypeScript, and plain CSS (design tokens in `src/styles/`). Content for metrics, disciplines, timeline, case studies, and consulting largely lives in **`src/data/resume.json`**.
 
 ## Setup
 
@@ -17,8 +17,8 @@ Dependencies are locked with **`bun.lock`**. **`package-lock.json`** is ignored 
 | `bun run dev` | Vite + Bun contact API together (site default `http://127.0.0.1:5173`, API **3001**). |
 | `bun run dev:site` | Vite only (no `/api` proxy target — contact form will not reach the API). |
 | `bun run dev:api` | Bun contact API only (`server/contact-api.ts`). |
-| `bun run build` | Typecheck + production bundle to `dist/`. |
-| `bun run preview` | Serve the `dist/` build. |
+| `bun run build` | Typecheck + site assets in `dist/client/` and contact Worker in `dist/website/`. |
+| `bun run preview` | Build and run the production Worker locally with Wrangler. |
 
 Uses **`concurrently`** so one command starts the frontend and `POST /api/contact` handler.
 
@@ -31,12 +31,12 @@ Uses **`concurrently`** so one command starts the frontend and `POST /api/contac
 | `/about` | Full-story bio, facts, skills matrix. |
 | `/contact` | Form (validated client + server), FAQ. |
 
-Static files in **`public/`** are copied to `dist/` as-is, including **`llms.txt`** and **`humans.txt`**.
+Static files in **`public/`** are copied to `dist/client/` as-is, including **`llms.txt`** and **`humans.txt`**.
 
 ## Contact form
 
 - **Local:** Vite proxies **`/api`** to `http://127.0.0.1:3001` (`vite.config.ts`). **`bun run dev`** starts both. Submissions go to **`/api/contact`** (Bun + Resend).
-- **Production:** Set **`VITE_CONTACT_API_BASE`** to the origin that serves the API (no trailing slash). The client calls `${VITE_CONTACT_API_BASE}/api/contact`.
+- **Production:** `wrangler.jsonc` runs `worker.ts` for `/api/*` and serves the site assets on the same origin. Leave `VITE_CONTACT_API_BASE` unset for this setup. The Worker needs existing `RESEND_API_KEY` and `CONTACT_INBOX_EMAIL` secrets; `RESEND_FROM_EMAIL` selects a verified sender. GET returns 405; invalid POST requests return 400 without sending email.
 - **From / Reply-To:** `from` must be a Resend-verified sender (`RESEND_FROM_EMAIL`). The visitor’s email is set as **`replyTo`** and in the message body — see `server/contact-api.ts`.
 
 Env vars for the API are in **`.env.example`**. Copy to **`.env`** for the Bun process; never commit secrets.
@@ -45,7 +45,7 @@ Env vars for the API are in **`.env.example`**. Copy to **`.env`** for the Bun p
 
 - Set **`VITE_SITE_URL`** to your canonical origin (no trailing slash), e.g. `https://example.com`. Used for:
   - **`PageHelmet`** / **`GlobalJsonLd`** canonical and absolute URLs (`src/lib/siteUrl.ts`).
-  - **`sitemap.xml`** and **`robots.txt`** emitted into **`dist/`** on **`bun run build`** (plugin in `vite.config.ts`).
+  - **`sitemap.xml`** and **`robots.txt`** emitted into **`dist/client/`** on **`bun run build`** (plugin in `vite.config.ts`).
 
 If `VITE_SITE_URL` is unset at build time, the plugin falls back to `http://127.0.0.1:5173` — set it for real deploys.
 
@@ -61,4 +61,4 @@ If `VITE_SITE_URL` is unset at build time, the plugin falls back to `http://127.
 
 ## Requirements
 
-- **[Bun](https://bun.sh)** — install, scripts, lockfile, and contact API (`bun run server/contact-api.ts`).
+- **[Bun](https://bun.sh)**: install, scripts, lockfile, and contact API (`bun run server/contact-api.ts`).
