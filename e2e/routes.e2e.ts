@@ -7,10 +7,10 @@ type RouteCheck =
   | { path: string; kind: 'text'; text: RegExp | string; screenshot: string };
 
 const ROUTES: RouteCheck[] = [
-  { path: '/', kind: 'heading', heading: /Solving the hardest problems/i, screenshot: 'home.png' },
-  { path: '/work', kind: 'heading', heading: /outcomes/i, screenshot: 'work.png' },
-  { path: '/about', kind: 'heading', heading: /Full\s+story/i, screenshot: 'about.png' },
-  { path: '/contact', kind: 'heading', heading: /Let's build/i, screenshot: 'contact.png' },
+  { path: '/', kind: 'heading', heading: /William Lopez-Cordero/i, screenshot: 'home.png' },
+  { path: '/work', kind: 'heading', heading: /Work and experience/i, screenshot: 'work.png' },
+  { path: '/about', kind: 'heading', heading: /About me/i, screenshot: 'about.png' },
+  { path: '/contact', kind: 'heading', heading: /Get in touch/i, screenshot: 'contact.png' },
 ];
 
 test.describe('site routes', () => {

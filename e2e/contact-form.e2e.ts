@@ -5,7 +5,7 @@ import { expect, test } from '@playwright/test';
 test.describe('contact form', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/contact');
-    await expect(page.getByRole('heading', { name: /Let's build/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Get in touch/i })).toBeVisible();
   });
 
   test('shows client-side validation errors for empty submit', async ({ page }) => {

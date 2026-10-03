@@ -253,10 +253,12 @@ export function ContactPage() {
           </div>
           <div className="about-bio-prose contact-faq-list">
             {SITE_FAQ.map((item) => (
-              <div key={item.question} className="contact-faq-item">
-                <h3 className="discipline-label contact-faq-q">{item.question}</h3>
+              <details key={item.question} className="contact-faq-item">
+                <summary className="contact-faq-toggle">
+                  <h3 className="discipline-label contact-faq-q">{item.question}</h3>
+                </summary>
                 <p className="contact-faq-a">{item.answer}</p>
-              </div>
+              </details>
             ))}
           </div>
         </section>
