@@ -44,10 +44,10 @@ function TimelineEntry({ e }: { e: JobExperience }) {
   return (
     <>
       <div className={`timeline-period ${e.status === 'current' ? 'current' : ''}`}>
-        {e.period.includes('—') ? (
+        {e.period.includes('–') ? (
           <>
-            {e.period.split('—')[0].trim()} —<br />
-            {e.period.split('—')[1].trim()}
+            {e.period.split('–')[0].trim()} –<br />
+            {e.period.split('–')[1].trim()}
           </>
         ) : (
           e.period
@@ -131,7 +131,7 @@ export function WorkPage() {
     <>
       <PageHelmet
         title="Work · William Lopez-Cordero"
-        description="Case studies and experience — Google, Facebook, NASA JPL, Skunk Works, and startups Elphi and Bello."
+        description="AI enablement and IT operations at Handl Health, with earlier work at Bello, Elphi, NASA JPL, Google, Facebook, and Skunk Works."
         path="/work"
       />
       <Chrome>
@@ -140,14 +140,14 @@ export function WorkPage() {
             <div>
               <div className="page-label">/ Work · 02</div>
               <h1 className="page-title">
-                The
+                Work and
                 <br />
-                outcomes.
+                experience
               </h1>
             </div>
             <p className="page-intro-desc">
-              10+ years shipping systems at Google, Facebook, NASA JPL, and Skunk Works — through to startups Elphi and
-              Bello. Case studies first, then the full timeline.
+              AI enablement and IT operations at Handl Health. Earlier work in web3, mortgage software,
+              and aerospace at Bello, Elphi, NASA JPL, and Skunk Works.
             </p>
           </div>
         </section>
@@ -155,7 +155,7 @@ export function WorkPage() {
         <section ref={casesSectionRef} className="cases-full container" id="case-studies">
           <div className="section-head work-section-head">
             <span className="section-idx">A.</span>
-            <h2 className="section-kicker">Case studies.</h2>
+            <h2 className="section-kicker">Case studies</h2>
             {filter !== 'all' && (
               <span className="work-filter-showing">
                 Showing: {disciplines.find((d) => d.key === filter)?.label}
@@ -173,7 +173,7 @@ export function WorkPage() {
           </div>
           {filteredCaseStudies.length === 0 && (
             <p className="page-intro-desc work-empty-cases">
-              No case studies tagged for this discipline — try another filter or All.
+              No case studies in this area. Choose another filter or All.
             </p>
           )}
         </section>
@@ -181,7 +181,7 @@ export function WorkPage() {
         <section className="timeline-section container">
           <div className="section-head work-section-head">
             <span className="section-idx">B.</span>
-            <h2 className="section-kicker">Experience timeline.</h2>
+            <h2 className="section-kicker">Experience</h2>
           </div>
           <div className="filter-bar work-filter-bar">
             <span className="filter-label">Filter:</span>
@@ -209,7 +209,7 @@ export function WorkPage() {
         <section className="projects-section container">
           <div className="section-head work-section-head">
             <span className="section-idx">C.</span>
-            <h2 className="section-kicker">Projects & side work.</h2>
+            <h2 className="section-kicker">Projects</h2>
           </div>
           <div className="projects-grid">
             {RESUME_DATA.projects.map((p, i) => (

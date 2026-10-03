@@ -1,4 +1,4 @@
-import { RESUME_DATA } from '../data/resume';
+import { CURRENT_ROLE, RESUME_DATA } from '../data/resume';
 import { Chrome } from '../layout/Chrome';
 import { PageHelmet } from '../seo/PageHelmet';
 
@@ -7,7 +7,7 @@ export function AboutPage() {
     <>
       <PageHelmet
         title="About · William Lopez-Cordero"
-        description="MIT aerospace engineer, former founding engineer, and protocol builder — bio and stack."
+        description={RESUME_DATA.hero.subtitle}
         path="/about"
       />
       <Chrome>
@@ -16,14 +16,11 @@ export function AboutPage() {
             <div>
               <div className="page-label">/ About · 03</div>
               <h1 className="page-title">
-                Full
-                <br />
-                story.
+                About me
               </h1>
             </div>
             <p className="page-intro-desc">
-              Engineer. Founder. MIT aerospace &apos;19 who ended up shipping web3 protocols. Here&apos;s how that happened,
-              what I care about, and what I&apos;m good at.
+              {RESUME_DATA.hero.subtitle}
             </p>
           </div>
         </section>
@@ -33,26 +30,29 @@ export function AboutPage() {
             <div className="about-bio-label">01 / Bio</div>
             <div className="about-bio-prose">
               <p>
-                I build systems that have to work when it counts—user scale, serious capital at risk, or missions where
-                failure isn&apos;t recoverable.
+                I lead AI enablement and IT at Handl Health. I work with Operations, Customer Success, Sales,
+                Marketing, and Legal on AI adoption, provide ongoing employee training, and run IT using AI workflows.
               </p>
               <p>
-                I started at <em>NASA JPL</em> in 2014, writing sequencing software for the Europa Mission. Then{' '}
-                <em>Google</em>, then <em>Facebook</em>, where I shipped GIF comments to News Feed. Then,{' '}
-                <em>MIT&apos;s Space Systems Lab</em>, where I validated flight hardware for OSIRIS-REx as part of
-                NASA&apos;s successful mission to asteroid Bennu.
+                I administer Claude Enterprise and its connectors, pilot AI tools, and manage AI usage and
+                data-handling policies. My IT work covers Google Workspace, identity and access, SSO,
+                onboarding and offboarding, JAMF Pro and Protect, SaaS vendors and licenses, and endpoint support.
               </p>
               <p>
-                After an aerospace stint at <em>Lockheed&apos;s Skunk Works</em>, I pivoted to founding. Five years
-                co-running <em>Elphi</em>, a mortgage platform that reduced loan origination time by 30%+. Three years
-                as founding engineer at <em>Bello</em>, where I shipped a web3 creator protocol driving $2M+ in revenue
-                and distributed $1M+ in onchain incentives. More recently at{' '}
-                <em>NBN (Neural Broadcast Network)</em>, I&apos;ve shipped <em>AI Podcast</em> and other AI product
-                work.
+                I also research agentic engineering methods to develop data science techniques for product data
+                integrity. My AI adoption work delivers 2× business value relative to AI spend.
               </p>
               <p>
-                My throughline is the same in all of them: take a hard, ambiguous problem — thermodynamics, or ingestion
-                pipelines, or multi-chain incentive design — and turn it into a system that just works.
+                From July 2023 to May 2026, I was founding engineer at <em>Bello</em>. I built a creator platform
+                serving 60K+ users and an onchain protocol that generated $2M+ in revenue and distributed $1M+ in
+                incentives. At <em>Elphi</em>, I co-founded a mortgage platform that reduced loan origination time
+                by 30%+. I also built automated AI podcast workflows for <em>NBN (Neural Broadcast Network)</em>.
+              </p>
+              <p>
+                My earlier work includes spacecraft sequencing software at <em>NASA JPL</em>, software at{' '}
+                <em>Google</em>, GIF comments for <em>Facebook</em> News Feed, REXIS flight hardware testing at{' '}
+                <em>MIT&apos;s Space Systems Lab</em>, and thermodynamic and structural analysis at{' '}
+                <em>Lockheed Martin&apos;s Skunk Works</em>. I earned my aerospace engineering degree at MIT in 2019.
               </p>
             </div>
           </div>
@@ -67,8 +67,12 @@ export function AboutPage() {
               <div className="about-fact-v">BS Aerospace, MIT &apos;19</div>
             </div>
             <div className="about-fact">
+              <div className="about-fact-k">Current role</div>
+              <div className="about-fact-v">{CURRENT_ROLE.role} · {CURRENT_ROLE.org}</div>
+            </div>
+            <div className="about-fact">
               <div className="about-fact-k">Availability</div>
-              <div className="about-fact-v">Open to engagements · full-time, contract, advisory</div>
+              <div className="about-fact-v">{RESUME_DATA.identity.availability}</div>
             </div>
           </div>
         </section>
@@ -76,7 +80,7 @@ export function AboutPage() {
         <section className="skills-section container">
           <div className="section-head">
             <span className="section-idx">02</span>
-            <h2 className="section-kicker">Stack · tools · methods.</h2>
+            <h2 className="section-kicker">Tools and methods</h2>
           </div>
           <div className="skills-grid">
             {Object.entries(RESUME_DATA.skills).map(([group, items]) => (

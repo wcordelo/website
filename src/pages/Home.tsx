@@ -1,18 +1,19 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { RESUME_DATA } from '../data/resume';
+import { CURRENT_ROLE, RESUME_DATA } from '../data/resume';
 import type { DisciplineKey } from '../data/resume.types';
 import { useTweaks } from '../hooks/useTweaks';
 import { Chrome } from '../layout/Chrome';
+import { RevolutHero } from '../components/RevolutHero';
 import { PageHelmet } from '../seo/PageHelmet';
 
 const disciplineCopy: Record<DisciplineKey, string> = {
-  ai: 'AI content pipelines powering 1M+ downloads — aggregation, validation, generation. Agent workflows and LLM orchestration shipped to production.',
+  ai: 'Enterprise AI adoption and employee training at Handl Health. Built automated content pipelines with 1M+ downloads.',
   software:
-    'Full-stack platforms that scale — React, Next.js, TypeScript. End-to-end ownership from prototype to production. 60K+ users in production.',
+    'React, Next.js, and TypeScript platforms serving 60K+ users. Architecture and implementation from prototype to production.',
   protocol:
     'Onchain incentive systems, smart contracts, multi-chain deployments. $2M+ revenue, $1M+ distributed across EVM chains.',
-  infra: 'Event-driven ingestion, ClickHouse + BigQuery analytics, Pulumi-driven cloud. 10× query speedups at production scale.',
+  infra: 'Event-driven ingestion, ClickHouse and BigQuery analytics, and Pulumi cloud infrastructure. Reduced query latency by 10×.',
   aerospace:
     "JPL sequencing software for spacecraft. OSIRIS-REx flight hardware. Skunk Works thermo and structures. MIT Aero '19.",
 };
@@ -31,7 +32,7 @@ function HeroType() {
       <div className="hero-meta container">
         <div className="hero-meta-row">
           <span className="hero-meta-k">Portfolio</span>
-          <span className="hero-meta-v">2026 — ∞</span>
+          <span className="hero-meta-v">2026</span>
         </div>
         <div className="hero-meta-row">
           <span className="hero-meta-k">Based</span>
@@ -41,7 +42,7 @@ function HeroType() {
           <span className="hero-meta-k">Status</span>
           <span className="hero-meta-v">
             <span className="status-dot" />
-            Taking engagements
+            {RESUME_DATA.identity.availability}
           </span>
         </div>
       </div>
@@ -69,10 +70,10 @@ function HeroType() {
         <div className="hero-bio">{RESUME_DATA.hero.subtitle}</div>
         <div className="hero-ctas">
           <Link to="/work" className="btn btn-primary">
-            See the work <span className="arrow">→</span>
+            View work <span className="arrow">→</span>
           </Link>
           <Link to="/contact" className="btn">
-            Work with me <span className="arrow">↗</span>
+            Contact me <span className="arrow">↗</span>
           </Link>
         </div>
       </div>
@@ -153,25 +154,19 @@ function HeroOrbit() {
     <section className="hero-orbit">
       <canvas ref={canvasRef} className="orbit-canvas" />
       <div className="container hero-orbit-content">
-        <div className="hero-orbit-label">FIVE DISCIPLINES · ONE OPERATOR</div>
+        <div className="hero-orbit-label">AI ENABLEMENT · WORKFLOW AUTOMATION · IT OPERATIONS</div>
         <h1 className="hero-orbit-title">
-          Solving the
-          <br />
-          hardest problems.
+          {RESUME_DATA.hero.tag}
         </h1>
         <div className="hero-orbit-bio">
-          AI Automation · Full Stack · Protocol ·
-          <br />
-          Data Infra · Aerospace.
-          <br />
-          MIT Aero &apos;19 · 10+ years shipping systems that matter.
+          {RESUME_DATA.hero.subtitle}
         </div>
         <div className="hero-ctas">
           <Link to="/work" className="btn btn-primary">
-            See the work <span className="arrow">→</span>
+            View work <span className="arrow">→</span>
           </Link>
           <Link to="/contact" className="btn">
-            Work with me <span className="arrow">↗</span>
+            Contact me <span className="arrow">↗</span>
           </Link>
         </div>
       </div>
@@ -187,18 +182,20 @@ function HeroTerminal() {
   const lines = useMemo<TermLine[]>(
     () => [
       { prompt: '~', text: 'whoami' },
-      { out: "william lopez-cordero · MIT '19 · engineer" },
+      { out: `${RESUME_DATA.identity.name} · MIT '19` },
       { prompt: '~', text: 'cat disciplines.txt' },
       { out: '→ ai automation' },
       { out: '→ full stack' },
       { out: '→ protocol' },
       { out: '→ data infra' },
       { out: '→ aerospace' },
-      { prompt: '~', text: 'status --last-role' },
-      { out: 'founding engineer @ bello · 2023 → apr 2026' },
-      { out: '60K users · $2M revenue · $1M distributed' },
-      { prompt: '~', text: 'echo "open for engagements"' },
-      { out: 'open for engagements — full-time · contract · advisory' },
+      { prompt: '~', text: 'status --current-role' },
+      { out: `${CURRENT_ROLE.role} @ ${CURRENT_ROLE.org} · ${CURRENT_ROLE.period}` },
+      { out: 'AI Enablement | Workflow Automation | IT Operations' },
+      { prompt: '~', text: 'cat focus.txt' },
+      { out: 'enterprise AI training · product data integrity · IT operations' },
+      { prompt: '~', text: 'cat availability.txt' },
+      { out: RESUME_DATA.identity.availability },
       { prompt: '~', text: '_', cursor: true },
     ],
     [],
@@ -241,19 +238,15 @@ function HeroTerminal() {
         </div>
         <div className="hero-terminal-side">
           <h1 className="hero-terminal-title">
-            Solving
-            <br />
-            the hardest
-            <br />
-            problems.
+            {RESUME_DATA.hero.tag}
           </h1>
           <p className="hero-terminal-bio">{RESUME_DATA.hero.subtitle}</p>
           <div className="hero-ctas">
             <Link to="/work" className="btn btn-primary">
-              See the work <span className="arrow">→</span>
+              View work <span className="arrow">→</span>
             </Link>
             <Link to="/contact" className="btn">
-              Work with me <span className="arrow">↗</span>
+              Contact me <span className="arrow">↗</span>
             </Link>
           </div>
         </div>
@@ -264,6 +257,7 @@ function HeroTerminal() {
 
 function HomeHero() {
   const [tweaks] = useTweaks();
+  if (tweaks.heroVariant === 'revolut') return <RevolutHero />;
   if (tweaks.heroVariant === 'orbit') return <HeroOrbit />;
   if (tweaks.heroVariant === 'terminal') return <HeroTerminal />;
   return <HeroType />;
@@ -274,7 +268,7 @@ function HomeMetrics() {
     <section className="home-metrics container" data-reveal>
       <div className="section-head">
         <span className="section-idx">01</span>
-        <h2 className="section-kicker">Selected numbers. 10+ years.</h2>
+        <h2 className="section-kicker">Selected results</h2>
       </div>
       <div className="metrics-grid">
         {RESUME_DATA.metrics.map((m, i) => (
@@ -295,7 +289,7 @@ function HomeDisciplines() {
       <div className="container">
         <div className="section-head">
           <span className="section-idx">02</span>
-          <h2 className="section-kicker">Five disciplines. One operator.</h2>
+          <h2 className="section-kicker">Areas of work</h2>
         </div>
       </div>
       <div className="discipline-grid">
@@ -353,20 +347,20 @@ function HomeConsulting() {
     <section className="home-consulting container" data-reveal>
       <div className="section-head">
         <span className="section-idx">04</span>
-        <h2 className="section-kicker">Consulting — helping teams scale.</h2>
+        <h2 className="section-kicker">How I work</h2>
       </div>
       <div className="consulting-inner">
         <p className="consulting-pitch">{RESUME_DATA.consulting.pitch}</p>
         <div className="consulting-grid">
           {RESUME_DATA.consulting.services.map((s, i) => (
             <div className="consulting-card" key={s.title}>
-              <div className="consulting-card-num" style={{ margin: '0px 0px 16px 20px' }}>
+              <div className="consulting-card-num">
                 0{i + 1}/
               </div>
-              <h3 className="consulting-card-title" style={{ margin: '0px 0px 16px 20px' }}>
+              <h3 className="consulting-card-title">
                 {s.title}
               </h3>
-              <p className="consulting-card-blurb" style={{ margin: '0px 0px 0px 20px' }}>
+              <p className="consulting-card-blurb">
                 {s.blurb}
               </p>
             </div>
@@ -420,7 +414,7 @@ export function HomePage() {
   return (
     <>
       <PageHelmet
-        title="William Lopez-Cordero — AI · Protocol · Infra Engineer"
+        title={`${RESUME_DATA.identity.name} | ${RESUME_DATA.hero.titles.join(' | ')}`}
         description={RESUME_DATA.hero.subtitle}
         path="/"
       />

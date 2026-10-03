@@ -570,3 +570,23 @@ button {
 .btn:hover .arrow {
   transform: translateX(4px);
 }
+
+[data-theme="revolut"] {
+  color-scheme: dark;
+  --bg: #000;
+  --bg-elev: #16181a;
+  --ink: #fff;
+  --ink-soft: #d1d2d4;
+  --muted: #a3a5ab;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.28);
+  --accent: #7379ff;
+  --accent-soft: rgba(73, 79, 223, 0.18);
+  --highlight: #e61e49;
+  --primary: #494fdf;
+  --font-display: 'DM Sans', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --maxw: 1280px;
+  --radius: 12px;
+  --radius-lg: 20px;
+}

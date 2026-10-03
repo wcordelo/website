@@ -1,18 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
 
 export type PortfolioTweaks = {
-  theme: 'ink' | 'deep-space' | 'plasma';
+  theme: 'ink' | 'deep-space' | 'plasma' | 'revolut';
   type: 'editorial' | 'mono' | 'swiss';
   density: 'tight' | 'normal' | 'loose';
-  heroVariant: 'type' | 'orbit' | 'terminal';
+  heroVariant: 'type' | 'orbit' | 'terminal' | 'revolut';
   sectionOrder: 'default' | 'work-first' | 'skills-first';
 };
 
 const TWEAK_DEFAULTS: PortfolioTweaks = {
-  theme: 'ink',
+  theme: 'revolut',
   type: 'editorial',
   density: 'normal',
-  heroVariant: 'orbit',
+  heroVariant: 'revolut',
   sectionOrder: 'default',
 };
 

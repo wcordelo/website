@@ -1,3 +1,4 @@
+import { RESUME_DATA } from '../data/resume';
 import type { MouseEvent } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -14,7 +15,7 @@ export function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <div>
-          <div style={{ color: 'var(--muted)' }}>Available for select engagements · 2026</div>
+          <div style={{ color: 'var(--muted)' }}>{RESUME_DATA.identity.availability}</div>
           <div style={{ marginTop: '0.5rem' }}>
             <Link
               to="/contact#get-in-touch"
