@@ -33,7 +33,7 @@ for (const delayed of ['none', 'stylesheet', 'font'] as const) {
       }).observe({ type: 'layout-shift', buffered: true });
     });
     if (delayed !== 'none') {
-      await page.route(delayed === 'stylesheet' ? '**/assets/*.css' : 'https://fonts.gstatic.com/**', async (route) => {
+      await page.route(delayed === 'stylesheet' ? '**/src/**/*.css' : 'https://fonts.gstatic.com/**', async (route) => {
         await new Promise((resolve) => setTimeout(resolve, 1500));
         await route.continue();
       });
