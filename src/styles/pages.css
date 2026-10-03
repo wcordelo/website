@@ -775,11 +775,38 @@
   margin-bottom: var(--sp-4);
 }
 
+.contact-faq-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  min-height: 44px;
+  padding-block: var(--sp-2);
+  cursor: pointer;
+  list-style: none;
+}
+
+.contact-faq-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.contact-faq-toggle::after {
+  content: '+';
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 1.5rem;
+}
+
+.contact-faq-item[open] > .contact-faq-toggle::after {
+  content: '−';
+}
+
 .contact-faq-q {
-  margin-bottom: var(--sp-2);
+  margin: 0;
 }
 
 .contact-faq-a {
+  margin-top: var(--sp-2);
   color: var(--muted);
 }
 
