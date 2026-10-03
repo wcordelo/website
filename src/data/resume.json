@@ -2,7 +2,8 @@
   "identity": {
     "name": "William Lopez-Cordero",
     "location": "Los Angeles, CA",
-    "education": "BS Aerospace Engineering, MIT (2014–2019)"
+    "education": "BS Aerospace Engineering, MIT (2014–2019)",
+    "availability": "Planning select AI enablement engagements in 2027"
   },
   "disciplines": [
     {
@@ -59,19 +60,50 @@
   ],
   "hero": {
     "titles": [
-      "ai engineer",
-      "protocol engineer",
-      "infra engineer"
+      "AI Enablement",
+      "Workflow Automation",
+      "IT Operations"
     ],
-    "tag": "Solving the hardest problems.",
-    "subtitle": "MIT aerospace engineer and former founding engineer. I build systems — from spacecraft sequencing at JPL to onchain protocols distributing $1M+ in incentives. 10+ years across aerospace, consumer, fintech, and web3. Open to full-time, contract, and advisory engagements."
+    "tag": "Enterprise AI and IT at Handl Health.",
+    "subtitle": "I lead AI adoption and IT operations at Handl Health. I train employees in enterprise AI workflows and research agentic engineering methods for product data integrity. Previously, I was a founding engineer at Bello. I studied aerospace engineering at MIT."
   },
   "experience": [
+    {
+      "id": "handl-health",
+      "role": "AI Enablement & IT Lead",
+      "org": "Handl Health",
+      "period": "May 2026 – Present",
+      "location": "Remote",
+      "status": "current",
+      "discipline": [
+        "ai",
+        "infra"
+      ],
+      "blurb": "Lead AI adoption across Operations, Customer Success, Sales, Marketing, and Legal, and run IT as the sole lead.",
+      "highlights": [
+        "Lead AI adoption across Operations, Customer Success, Sales, Marketing, and Legal, delivering 2× business value relative to AI spend.",
+        "Administer and provision Claude Enterprise, manage connectors, and pilot AI tools.",
+        "Train all employees in enterprise AI and role-specific workflows on an ongoing basis.",
+        "Manage AI usage, governance, and data-handling policies.",
+        "Develop new data science techniques through agentic engineering research focused on product data integrity.",
+        "Administer Google Workspace, identity and access, SSO, and employee onboarding and offboarding.",
+        "Manage devices with JAMF Pro and Protect, provide endpoint support, and manage SaaS vendors and licenses.",
+        "Run IT as the sole lead using AI workflows."
+      ],
+      "stack": [
+        "Claude Enterprise",
+        "Google Workspace",
+        "SSO",
+        "JAMF Pro",
+        "JAMF Protect",
+        "Agentic Engineering"
+      ]
+    },
     {
       "id": "bello",
       "role": "Founding Engineer",
       "org": "Bello",
-      "period": "2023 — Apr 2026",
+      "period": "Jul 2023 – May 2026",
       "location": "Remote",
       "discipline": [
         "ai",
@@ -79,14 +111,14 @@
         "protocol",
         "infra"
       ],
-      "blurb": "Founding engineer on a web3 creator platform. Scaled to 60K+ users, drove $2M+ in protocol revenue, and distributed $1M+ in onchain incentives.",
+      "blurb": "Built a web3 creator platform serving 60K+ users. The protocol generated $2M+ in revenue and distributed $1M+ in onchain incentives.",
       "highlights": [
         "Architected full-stack platform (React, Next.js, TypeScript) serving 60K+ users",
-        "Led AWS/GCP infra using Pulumi — reduced manual ops by 90%+, enabled auto-scaling",
+        "Led AWS/GCP infra using Pulumi. reduced manual ops by 90%+, enabled auto-scaling",
         "Shipped AI content pipelines (aggregation, validation, generation) powering 1M+ downloads",
-        "Launched Blueprint Protocol + creator monetization — drove $2M+ protocol revenue",
+        "Launched Blueprint Protocol + creator monetization. drove $2M+ protocol revenue",
         "Designed onchain loyalty/rewards system distributing $1M+; retention 30% → 60%",
-        "Built ClickHouse + BigQuery analytics — 10× query latency reduction",
+        "Built ClickHouse + BigQuery analytics. 10× query latency reduction",
         "Ingestion across Ethereum, Base, Optimism, Zora via event-driven pipelines",
         "Wallet integrations via viem, wagmi, ethers, Dynamic"
       ],
@@ -104,7 +136,7 @@
       "id": "dragverse",
       "role": "Co-Founder",
       "org": "Dragverse",
-      "period": "2023 — 2025",
+      "period": "2023 – 2025",
       "location": "Remote",
       "discipline": [
         "protocol",
@@ -125,27 +157,30 @@
       "id": "elphi",
       "role": "Co-Founder & Head of Architecture",
       "org": "Elphi",
-      "period": "2018 — 2023",
+      "period": "2018 – 2023",
       "location": "Remote",
       "discipline": [
         "software",
         "infra"
       ],
-      "blurb": "Co-founded a mortgage platform. Took systems 0→1 into paying customers and led the architecture org through seed-stage fundraising.",
+      "blurb": "Co-founded a mortgage platform and led its architecture team through seed-stage fundraising.",
       "highlights": [
-        "Architected mortgage platform — reduced loan origination time by 30%+",
+        "Architected mortgage platform. reduced loan origination time by 30%+",
         "Built cloud-native infra on GCP + Firebase supporting production workloads",
         "Managed and mentored 10+ engineers across frontend, backend, and infra",
-        "Delivered multiple 0→1 systems that converted into paying customers",
-        "Improved system efficiency by 25% through performance optimization",
-        "Established CI/CD, testing, monitoring — improving deployment speed and stability"
+        "Built and launched products used by paying customers",
+        "Delivered a 25%+ improvement across performance, reliability, and operations",
+        "Established CI/CD, testing, monitoring. improving deployment speed and stability",
+        "Supported SOC 2 audit efforts with Drata and JAMF"
       ],
       "stack": [
         "GCP",
         "Firebase",
         "Node.js",
         "React",
-        "Postgres"
+        "Postgres",
+        "Drata",
+        "JAMF"
       ]
     },
     {
@@ -157,11 +192,11 @@
       "discipline": [
         "aerospace"
       ],
-      "blurb": "Thermodynamic and structural analysis inside Skunk Works — the legendary black-project shop at Lockheed.",
+      "blurb": "Analyzed thermodynamics and aircraft structures at Lockheed Martin’s Skunk Works.",
       "highlights": [
         "Thermodynamic analysis of aircraft engine performance under varying conditions",
         "Modeled wing structures using CATIA for outer wing design",
-        "Conducted stress analysis ensuring structural integrity",
+        "Conducted structural stress analysis",
         "Analyzed system-level data transfer across aircraft architecture"
       ],
       "stack": [
@@ -174,12 +209,12 @@
       "id": "mit-ssl",
       "role": "Space Systems Engineer",
       "org": "MIT Space Systems Lab · OSIRIS-REx",
-      "period": "2016 — 2017",
+      "period": "2016 – 2017",
       "location": "Cambridge, MA",
       "discipline": [
         "aerospace"
       ],
-      "blurb": "Validated the REXIS instrument cover for a 2-year deep-space mission. Hardware that is now orbiting Bennu.",
+      "blurb": "Validated the REXIS instrument cover and Frangibolt Assembly for the OSIRIS-REx mission to Bennu.",
       "highlights": [
         "Developed test plans validating REXIS instrument cover compatibility",
         "Built thermal resistance models and hardware replicas for vacuum chamber testing",
@@ -200,7 +235,7 @@
       "discipline": [
         "software"
       ],
-      "blurb": "Shipped GIF comments to News Feed. Used by millions at launch.",
+      "blurb": "Shipped GIF comments to Facebook News Feed, used by millions at launch.",
       "highlights": [
         "Shipped GIF comments feature to News Feed used by millions",
         "Built full-stack functionality with React, PHP, Hack, JavaScript"
@@ -261,7 +296,7 @@
       "title": "AI Podcast Series",
       "context": "NBN (Neural Broadcast Network)",
       "year": "2026",
-      "summary": "End-to-end automated AI audio podcast — generation, editing, and distribution with zero human-in-the-loop. Hit #1 in UK and #3 in US charts with 1M+ downloads.",
+      "summary": "Built an automated AI audio podcast pipeline for generation, editing, and distribution with no human intervention. The series ranked #1 in the UK and #3 in the US, with 1M+ downloads.",
       "role": "Systems architecture, AI pipeline, automation",
       "metrics": [
         [
@@ -292,7 +327,7 @@
       "title": "Blueprint Protocol",
       "context": "Bello",
       "year": "2025",
-      "summary": "Designed and shipped an onchain creator-monetization protocol that drove $2M+ in revenue and distributed $1M+ to creators and fans across Ethereum, Base, Optimism and Zora.",
+      "summary": "Designed and built an onchain creator-monetization protocol that generated $2M+ in revenue and distributed $1M+ to creators and fans across Ethereum, Base, Optimism, and Zora.",
       "role": "Protocol architecture, smart contracts, backend",
       "metrics": [
         [
@@ -324,7 +359,7 @@
       "title": "Multi-chain Analytics Pipeline",
       "context": "Bello",
       "year": "2024",
-      "summary": "Event-driven ingestion across four EVM chains feeding ClickHouse + BigQuery. 10× query-latency reduction powered retention modeling and incentive distribution at scale.",
+      "summary": "Built event-driven ingestion across four EVM chains into ClickHouse and BigQuery. Reduced query latency by 10× for retention modeling and incentive distribution.",
       "role": "Infrastructure, data engineering",
       "metrics": [
         [
@@ -356,7 +391,7 @@
       "title": "Elphi Mortgage Platform",
       "context": "Elphi · 5 years",
       "year": "2018–2023",
-      "summary": "Co-founded and architected a cloud-native mortgage platform that reduced loan origination time by 30%+. Grew engineering org from 2 to 10+ across FE, BE and infra.",
+      "summary": "Co-founded and architected a cloud-native mortgage platform that reduced loan origination time by 30%+. Grew the engineering team from 2 to 10+ across frontend, backend, and infrastructure.",
       "role": "Head of Architecture, co-founder",
       "metrics": [
         [
@@ -368,8 +403,8 @@
           "eng team"
         ],
         [
-          "25%",
-          "efficiency gain"
+          "25%+",
+          "Overall improvement"
         ]
       ],
       "tags": [
@@ -387,7 +422,7 @@
       "title": "REXIS Cover · OSIRIS-REx",
       "context": "MIT SSL · NASA",
       "year": "2016–2017",
-      "summary": "Validated the Frangibolt Assembly and instrument cover for a 2-year deep-space mission to asteroid Bennu. Thermal + vacuum testing for hardware that had to survive the unsurvivable.",
+      "summary": "Validated the Frangibolt Assembly and REXIS instrument cover through thermal and vacuum testing for a two-year mission to asteroid Bennu.",
       "role": "Space systems engineer",
       "metrics": [
         [
@@ -397,10 +432,6 @@
         [
           "Bennu",
           "asteroid"
-        ],
-        [
-          "1",
-          "chance"
         ]
       ],
       "tags": [
@@ -413,7 +444,7 @@
   "projects": [
     {
       "title": "Blended Wing Body Aircraft Redesign",
-      "summary": "Used XFOIL and AVL to redesign a blended-wing-body aircraft — improving static stability at cruise.",
+      "summary": "Used XFOIL and AVL to redesign a blended-wing-body aircraft and improve static stability at cruise.",
       "tags": [
         "XFOIL",
         "AVL",
@@ -502,6 +533,15 @@
       "CFD",
       "Thermo",
       "Flight Dynamics"
+    ],
+    "AI & IT": [
+      "Claude Enterprise",
+      "Google Workspace",
+      "SSO",
+      "JAMF Pro",
+      "JAMF Protect",
+      "AI Governance",
+      "Workflow Automation"
     ]
   },
   "writing": [
@@ -537,19 +577,19 @@
     }
   ],
   "consulting": {
-    "pitch": "I work with a small number of teams each year on protocol architecture, infra scaling, and turning 0→1 products into production systems.",
+    "pitch": "I work on enterprise AI adoption, workflow automation, and IT operations, with experience in protocol architecture and data infrastructure.",
     "services": [
       {
-        "title": "Protocol Architecture",
-        "blurb": "Smart contract design, incentive mechanisms, and multi-chain deployments for creator-economy and defi protocols."
+        "title": "AI Enablement",
+        "blurb": "Enterprise AI adoption, employee training, and role-specific workflows."
       },
       {
-        "title": "Infra & Data",
-        "blurb": "Analytics pipelines, ClickHouse + BigQuery, event-driven ingestion at scale. 10× query improvements are normal."
+        "title": "Workflow Automation",
+        "blurb": "Agent workflows, content pipelines, and data engineering with ClickHouse and BigQuery."
       },
       {
-        "title": "0→1 Engineering",
-        "blurb": "Founding-engineer-level work. Architecture, team scaling, and shipping production systems fast without accumulating debt."
+        "title": "IT Operations",
+        "blurb": "IT operations using AI workflows, cloud infrastructure, and system architecture."
       }
     ]
   }

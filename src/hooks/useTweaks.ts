@@ -1,18 +1,18 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useLayoutEffect, useState } from 'react';
 
 export type PortfolioTweaks = {
-  theme: 'ink' | 'deep-space' | 'plasma';
+  theme: 'ink' | 'deep-space' | 'plasma' | 'revolut';
   type: 'editorial' | 'mono' | 'swiss';
   density: 'tight' | 'normal' | 'loose';
-  heroVariant: 'type' | 'orbit' | 'terminal';
+  heroVariant: 'type' | 'orbit' | 'terminal' | 'revolut';
   sectionOrder: 'default' | 'work-first' | 'skills-first';
 };
 
 const TWEAK_DEFAULTS: PortfolioTweaks = {
-  theme: 'ink',
+  theme: 'revolut',
   type: 'editorial',
   density: 'normal',
-  heroVariant: 'orbit',
+  heroVariant: 'revolut',
   sectionOrder: 'default',
 };
 
@@ -31,16 +31,22 @@ export function useTweaks(): [PortfolioTweaks, (patch: Partial<PortfolioTweaks>)
   const [tweaks, setTweaks] = useState<PortfolioTweaks>(() => {
     try {
       const saved = localStorage.getItem('portfolio-tweaks');
-      return saved ? { ...TWEAK_DEFAULTS, ...JSON.parse(saved) } : { ...TWEAK_DEFAULTS };
+      const parsed = saved ? JSON.parse(saved) : {};
+      const next = { ...TWEAK_DEFAULTS, ...parsed };
+      if (parsed.version !== 2 && next.theme === 'ink' && next.heroVariant === 'orbit') {
+        next.theme = TWEAK_DEFAULTS.theme;
+        next.heroVariant = TWEAK_DEFAULTS.heroVariant;
+      }
+      return next;
     } catch {
       return { ...TWEAK_DEFAULTS };
     }
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     applyTweaks(tweaks);
     try {
-      localStorage.setItem('portfolio-tweaks', JSON.stringify(tweaks));
+      localStorage.setItem('portfolio-tweaks', JSON.stringify({ ...tweaks, version: 2 }));
     } catch {
       /* ignore */
     }

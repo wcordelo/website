@@ -1,21 +1,37 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="revolut">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      try {
+        const saved = JSON.parse(localStorage.getItem('portfolio-tweaks') || '{}');
+        if (saved.version !== 2 && saved.theme === 'ink' && saved.heroVariant === 'orbit') {
+          saved.theme = 'revolut';
+          saved.heroVariant = 'revolut';
+          saved.version = 2;
+          localStorage.setItem('portfolio-tweaks', JSON.stringify(saved));
+        }
+        const root = document.documentElement;
+        if (saved.theme === 'ink') root.removeAttribute('data-theme');
+        else if (['revolut', 'deep-space', 'plasma'].includes(saved.theme)) root.dataset.theme = saved.theme;
+        if (['mono', 'swiss'].includes(saved.type)) root.dataset.type = saved.type;
+        if (['tight', 'normal', 'loose'].includes(saved.density)) root.dataset.density = saved.density;
+      } catch {}
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Non-blocking: trims weights to what the CSS uses; async load avoids blocking first paint -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Geist+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Geist+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Geist+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Geist+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap"
       />
     </noscript>
     <title>William Lopez-Cordero</title>

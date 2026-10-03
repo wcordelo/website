@@ -787,10 +787,6 @@
   padding-top: var(--sp-5);
 }
 
-#get-in-touch {
-  scroll-margin-top: 5rem;
-}
-
-.case-card[id^="case-"] {
-  scroll-margin-top: 5rem;
+.page-wrap [id] {
+  scroll-margin-top: var(--anchor-offset, 5rem);
 }

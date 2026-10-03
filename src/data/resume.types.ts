@@ -4,6 +4,7 @@ export interface Identity {
   name: string;
   location: string;
   education: string;
+  availability: string;
   email?: string;
   phone?: string;
   linkedin?: string;

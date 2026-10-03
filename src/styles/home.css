@@ -579,6 +579,8 @@
   margin-bottom: 1rem;
 }
 
+.consulting-card :is(.consulting-card-num, .consulting-card-title, .consulting-card-blurb) { margin-left: 20px; }
+
 .consulting-card-blurb {
   font-size: var(--step-0);
   line-height: 1.55;
